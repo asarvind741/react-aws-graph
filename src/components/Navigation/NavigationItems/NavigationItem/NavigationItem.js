@@ -5,7 +5,6 @@ import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp'
 import './NavigationItem.css';
 
 const navigationItem = ( props ) => {
-    console.log("psds", props.link)
     if(props.link === "/close-menu")
     {
         return (
@@ -13,7 +12,9 @@ const navigationItem = ( props ) => {
                 <NavLink 
                     to={props.link}
                     exact={props.exact}
-                    activeClassName= "active">{props.children}
+                    onClick = { props.selected }
+                    activeClassName= "active">
+                    {props.children}
                      <KeyboardArrowUp />
                 </NavLink>
                
@@ -26,7 +27,10 @@ const navigationItem = ( props ) => {
         <NavLink 
             to={props.link}
             exact={props.exact}
-            activeClassName= "active">{props.children}
+            activeClassName= "active"
+            onClick = { props.selected }>
+            {props.children}
+           
         </NavLink>
     </li>
     )

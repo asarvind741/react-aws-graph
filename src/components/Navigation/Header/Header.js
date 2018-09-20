@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+	ReactiveBase,
+	DataSearch,
+	ResultList,
+	SelectedFilters,
+} from '@appbaseio/reactivesearch';
 import './Header.css';
 import logo from '../../../asstes/Lexxcen_logo-0.png';
 import AppBar from '@material-ui/core/AppBar';
@@ -64,13 +70,19 @@ class Header extends React.Component {
               <img src = { logo } alt = "logo" width = "100" />
             </div>
             <div className="header-search header-col">
-                <div className="search-wrapper">
-                    <Input
-                        className = "Serach"
-                        placeholder="Search…"
-                        disableUnderline
-                    />
-                    <span className="search-icon"><SearchIcon /></span>
+            <div className="search-wrapper">
+            <div>
+					   <div>
+						  <DataSearch
+							dataField={['original_title', 'original_title.search']}
+							categoryField="authors.raw"
+							componentId="BookSensor"
+              iconPosition="right"/>
+					</div>
+					<div className="search-wrapper">
+						<SelectedFilters />
+					</div>
+				</div>
               </div>
             </div>
             <div className="account-section header-col">           

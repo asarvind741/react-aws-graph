@@ -13,8 +13,8 @@ const OpenMenuDrawer = ( props ) => {
             {/* <Backdrop show={props.open} clicked={props.closed}/> */}
             <div className= {attachedClasses}>
                 <nav>
-                    <NavigationItems />
-                </nav>
+                    <NavigationItems clicked = {props.closed} />
+               </nav>
             </div>
         </Fragment>
     );
