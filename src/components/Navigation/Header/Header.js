@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.css';
-import logo from '../../../asstes/LexenLogo.PNG';
+import logo from '../../../asstes/Lexxcen_logo-0.png';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
