@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Route, Switch, Link, NavLink} from 'react-router-dom';
+import {  Switch} from 'react-router-dom';
 import Layout from './hoc/Layout/Layout';
-import Header from './components/Navigation/Header/Header';
 
 
 class App extends Component {
@@ -9,9 +8,8 @@ class App extends Component {
     return (
       <div>
       <Layout>
-        <Header />
        <Switch>
-
+         
        </Switch>
       </Layout>
       </div>

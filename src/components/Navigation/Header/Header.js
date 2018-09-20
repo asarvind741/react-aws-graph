@@ -1,5 +1,6 @@
 import React from 'react';
 import './Header.css';
+import logo from '../../../asstes/LexenLogo.PNG';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -42,8 +43,8 @@ class Header extends React.Component {
         open={isMenuOpen}
         onClose={this.handleMenuClose}
         onMouseOut = { this.handleProfileMenuClose }>
-        <MenuItem onClick={this.handleClose}>Profile</MenuItem>
         <MenuItem onClick={this.handleClose}>My account</MenuItem>
+        <MenuItem onClick={this.handleClose}>Logout</MenuItem>
         
       </Menu>
     );
@@ -52,13 +53,16 @@ class Header extends React.Component {
       <div>
         <AppBar position="static" className = "Root">
           <Toolbar className="header-tool-bar">
-            <div className="mobile-trigger header-col">
+            <div className="mobile-trigger header-col" onClick = { this.props.openMenuClicked} >
                 <IconButton color="inherit" aria-label="Open drawer" className = "MenuButton">
                     <div className="logo-text">LAXCEN</div>
                     <div className="triger-icon">
                         <MenuIcon/>
                     </div>                    
                 </IconButton>
+            </div>
+            <div>
+              <img src = { logo } alt = "logo" width = "100" />
             </div>
             <div className="header-search header-col">
                 <div className="search-wrapper">
