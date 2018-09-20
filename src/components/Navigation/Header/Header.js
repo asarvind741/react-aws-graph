@@ -55,7 +55,6 @@ class Header extends React.Component {
           <Toolbar className="header-tool-bar">
             <div className="mobile-trigger header-col" onClick = { this.props.openMenuClicked} >
                 <IconButton color="inherit" aria-label="Open drawer" className = "MenuButton">
-                    <div className="logo-text">LAXCEN</div>
                     <div className="triger-icon">
                         <MenuIcon/>
                     </div>                    
