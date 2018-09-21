@@ -27,10 +27,14 @@
 }
 .header-search.header-col {
     text-align: center;
+    width:100%;
 }
 .search-wrapper {
     display: inline-block;
     position: relative;
+    width: 50%;
+    left: -200px;
+    top: 9px;
 }
 span.search-icon {
     position: absolute;
@@ -51,4 +55,8 @@ span.search-icon {
 }
 .logo-text {
     font-size: 12px;
+}
+
+.data-search-class input {
+    border-radius: 0;
 }

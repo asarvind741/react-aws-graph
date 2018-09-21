@@ -35,8 +35,11 @@ class Layout extends React.Component {
                  <OpenMenuDrawer
                     open={this.state.openMenu}
                     closed={this.openMeunHandler} />: null}
-                <div className = "">
+                <div className = "container">
+                <div>
                 {React.cloneElement(this.props.children, {...this.props})}  
+                </div>
+                
                 </div>
             </Fragment>
         )

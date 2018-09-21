@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import Level1Header from '../../components/Level1/Header/Header'
 
 
 class Level1 extends React.Component {
@@ -12,7 +13,8 @@ class Level1 extends React.Component {
 
         return(
             <Fragment>
-                <div> Leval 1 works</div>
+                
+                <Level1Header />
             </Fragment>
         )
     }

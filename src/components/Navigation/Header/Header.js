@@ -1,8 +1,6 @@
 import React from 'react';
 import {
-	ReactiveBase,
 	DataSearch,
-	ResultList,
 	SelectedFilters,
 } from '@appbaseio/reactivesearch';
 import './Header.css';
@@ -10,11 +8,9 @@ import logo from '../../../asstes/Lexxcen_logo-0.png';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import Input from '@material-ui/core/Input';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 
 
@@ -71,18 +67,15 @@ class Header extends React.Component {
             </div>
             <div className="header-search header-col">
             <div className="search-wrapper">
-            <div>
-					   <div>
-						  <DataSearch
+						  <DataSearch className = "data-search-class"
 							dataField={['original_title', 'original_title.search']}
 							categoryField="authors.raw"
 							componentId="BookSensor"
-              iconPosition="right"/>
-					</div>
+              iconPosition="right" />
 					<div className="search-wrapper">
 						<SelectedFilters />
 					</div>
-				</div>
+			
               </div>
             </div>
             <div className="account-section header-col">           

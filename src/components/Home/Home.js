@@ -30,7 +30,7 @@ class Home extends Component {
 		);
 	}
 
-	onData() {
+	onData(data) {
 		console.log(this.props)
 		return ({
 			title: <div className="book-title" dangerouslySetInnerHTML={{ __html: data.original_title }} />,
