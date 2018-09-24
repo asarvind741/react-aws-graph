@@ -23,7 +23,7 @@ import SearchWebs from '../../../components/SearchWeb/SearchWebs';
 class Header extends React.Component {
   state = {
     anchorEl: null,
-    webData: '',
+    webData: [],
     search: ''
   };
 
@@ -41,21 +41,24 @@ class Header extends React.Component {
   };
 
   inputChangehandler = event => {
-    const data = [];
+    this.setState({
+      webData: []
+    })
+    let data = [];
     this.setState({
       search: event.target.value
     }, () => {
       webData.forEach(item => {
         const title = item.title;
         const check = this.state.search;
-        if(title.indexOf(check)>=0){
+        if(title.toLowerCase().indexOf(check)>=0){
           data.push(item)
+          this.setState({webData: data})
         }
+      }, () => {
+        this.setState({webData: data})
       })
-    });
-      this.setState({webData: data})
-      // this.forceUpdate();
-  
+    }); 
     
 
     
@@ -89,6 +92,7 @@ class Header extends React.Component {
         
       </Menu>
     );
+    
 
     return (
       <div>
@@ -113,9 +117,13 @@ class Header extends React.Component {
                         onChange = { this.inputChangehandler }
                     />
                     <span className="search-icon"><SearchIcon /></span>
+                    {(this.state.webData && this.state.search != '') ?
                     <ul className="search-reasult">
-                    {(this.state.webData) ? <SearchWebs data = { this.state.webData } />: ''}
+                     <SearchWebs 
+                     staticData = { this.state.webData }
+                     searchTerm = { this.state.search} />
                     </ul>
+                    : ''}
               </div>
             </div>
             <div className="account-section header-col">           
