@@ -55,7 +55,7 @@ class NavigationItems extends React.Component {
         subMenu = { this.state.administration }>Administration</NavigationItem>
         <NavigationItem 
         link="/close-menu" 
-        // selected = {this.props.clicked}
+        selected = {this.props.clicked}
         >Close Menu</NavigationItem>
     </ul>
     )

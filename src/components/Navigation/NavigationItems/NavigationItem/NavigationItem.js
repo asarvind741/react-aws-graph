@@ -27,7 +27,7 @@ class NavigationItem extends React.Component {
         return (
                 <li className = "NavigationItem"
                     exact={this.props.exact}
-                    // onClick = { this.props.selected }
+                    onClick = { this.props.selected }
                     >
                     {this.props.children}
                      <KeyboardArrowUp className = "close-icon" />
