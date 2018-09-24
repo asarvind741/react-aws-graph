@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp'
+import KeyboardArrowUp from '@material-ui/icons/KeyboardArrowUp';
+import Menu from '../../UI/Menu/Menu';
 
 import './NavigationItem.css';
 
@@ -16,6 +17,7 @@ const navigationItem = ( props ) => {
                     activeClassName= "active">
                     {props.children}
                      <KeyboardArrowUp />
+                     <Menu>First</Menu>
                 </NavLink>
                
             </li>

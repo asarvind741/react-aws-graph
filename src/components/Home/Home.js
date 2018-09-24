@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 
 import {
-	ReactiveBase,
-	DataSearch,
-	ResultList,
-	SelectedFilters,
+
+	ResultList
 } from '@appbaseio/reactivesearch';
 
 import './Home.css';
@@ -31,7 +28,6 @@ class Home extends Component {
 	}
 
 	onData(data) {
-		console.log(this.props)
 		return ({
 			title: <div className="book-title" dangerouslySetInnerHTML={{ __html: data.original_title }} />,
 			description: (

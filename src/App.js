@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Layout from './hoc/Layout/Layout';
-import Level1 from './containers/Leval1/Leval1';
 import Homemain from './containers/Homemain/Homemain';
 
 
@@ -11,7 +10,6 @@ class App extends Component {
       <div>
       <Layout>
        <Switch>
-         <Route path = "/level1" component = { Level1 } />
           <Route path = "/" component = { Homemain } />
        </Switch>
       </Layout>

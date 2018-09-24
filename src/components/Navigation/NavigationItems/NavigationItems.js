@@ -5,12 +5,11 @@ import './NavigationItems.css'
 const navigationItems = (props) => (
     <ul className= "NavigationItems">
        
-        <NavigationItem link="/level1" selected = {props.clicked}>LEVAL 1</NavigationItem>
-        <NavigationItem link="/leval2" selected = {props.clicked}>LEVAL 2</NavigationItem>
-        <NavigationItem link="/leval3" selected = {props.clicked}>LEVAL 3</NavigationItem>
-        <NavigationItem link="/leval4" selected = {props.clicked}>LEVAL 4</NavigationItem>
-        <NavigationItem link="/leval5" selected = {props.clicked}>LEVAL 5</NavigationItem>
-        <NavigationItem link="/close-menu" selected = {props.clicked}>CLOSE MENU</NavigationItem>
+        <NavigationItem link="/file" selected = {props.clicked}>File</NavigationItem>
+        <NavigationItem link="/sytem" selected = {props.clicked}>System</NavigationItem>
+        <NavigationItem link="/licensing" selected = {props.clicked}>Licensing</NavigationItem>
+        <NavigationItem link="/administration" selected = {props.clicked}>Administration</NavigationItem>
+        <NavigationItem link="/close" selected = {props.clicked}>CLOSE MENU</NavigationItem>
     </ul>
 );
 

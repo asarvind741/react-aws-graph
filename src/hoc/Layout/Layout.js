@@ -1,5 +1,5 @@
 import React, { Fragment} from 'react';
-import { withRouter } from 'react-router-dom';
+import userList from '../../data/user.json';
 import { ReactiveBase } from '@appbaseio/reactivesearch';
 import Header from '../../components/Navigation/Header/Header';
 import OpenMenuDrawer from '../../components/Navigation/OpenMenuDrawer/OpenMenuDrawer';
@@ -7,7 +7,14 @@ class Layout extends React.Component {
 
     state = {
         openMeun: false,
-        textSearch: ''
+        textSearch: '',
+        user: {}
+    }
+
+    componentDidMount(){
+        this.setState({
+            user:userList[0]
+        })
     }
 
     openMeunHandler = () => {
@@ -29,7 +36,10 @@ class Layout extends React.Component {
                 <ReactiveBase
                  app="good-books-ds"
                  credentials="nY6NNTZZ6:27b76b9f-18ea-456c-bc5e-3a5263ebc63d">
-                 <Header openMenuClicked = {this.openMeunHandler } valueChanged = {(value) => this.valueChangedHandler(value) }/>
+                 <Header 
+                 openMenuClicked = {this.openMeunHandler } 
+                 valueChanged = {(value) => this.valueChangedHandler(value) }
+                 currentUser = { this.state.user }/>
                 </ReactiveBase>
                 {(this.state.openMenu)?
                  <OpenMenuDrawer

@@ -11,7 +11,7 @@
 
 .Serach {
     background-color:white;
-    border-radius: 15px;
+    border-radius: 0;
     min-width: 400px;
     padding: 0 0 0 5px;
 }
@@ -38,7 +38,7 @@
 }
 span.search-icon {
     position: absolute;
-    right: 10px;
+    right: 77px;
     top: 4px;
 }
 .search-wrapper input {
@@ -59,4 +59,66 @@ span.search-icon {
 
 .data-search-class input {
     border-radius: 0;
+}
+
+.card-account {
+    z-index: 200px;
+    width: 200px;
+    height: 200px;
+}
+
+.user-name-header {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    font-weight: 400;
+    font-style: bolder;
+    color: black;
+    padding: 10px;
+
+}
+
+.render-menu {
+    width: 800px;
+}
+
+.web-search {
+    background-color: white !important;
+    position: absolute
+}
+ul.search-reasult {
+    margin: 0;
+    list-style: none;
+    text-align: left;
+    position: absolute;
+    background: #fff;
+    width: 400px;
+    left: 72px;
+    top: 32px;
+    padding: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 0 0 4px 4px;
+}
+
+ul.search-reasult li {
+    display: block;
+    color: #000;
+    margin: 0 0 7px;
+    /* border-bottom: 1px solid #ccc; */
+    padding-bottom: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+ul.search-reasult li:last-child {
+    margin-bottom: 0; 
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+h4.heading-searhweb {
+    background-color: darkgray;
+    color: black;
+    text-align: center;
+    margin: 0;
+    border: 1 px solid red;
+    border: 1px solid black;
 }
