@@ -5,7 +5,8 @@ class SearchWebs extends React.Component {
     
 
 componentWillReceiveProps(nextProps){
-    this.props = nextProps;
+    console.log("next props", nextProps)
+    // this.props = nextProps;
 }
 
 render(){
@@ -18,7 +19,7 @@ render(){
    return  (
        <Fragment>
         <h4 className = "heading-searhweb">Web</h4>
-       { renderItem}
+      {(this.props.data.length>0) ? { renderItem} : ''}
        <h4 className = "heading-searhweb">Database</h4>
     </Fragment>
    )

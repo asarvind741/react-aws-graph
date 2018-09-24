@@ -113,9 +113,10 @@ class Header extends React.Component {
                         onChange = { this.inputChangehandler }
                     />
                     <span className="search-icon"><SearchIcon /></span>
+                    {(this.state.webData) ?
                     <ul className="search-reasult">
-                    {(this.state.webData) ? <SearchWebs data = { this.state.webData } />: ''}
-                    </ul>
+                     <SearchWebs data = { this.state.webData } />
+                    </ul> : ''}
               </div>
             </div>
             <div className="account-section header-col">           
