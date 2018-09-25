@@ -7,7 +7,7 @@ class SearchWebs extends React.Component {
 
 
 render(){
-    const { staticData, serchTerm } = this.props;
+    const { staticData } = this.props;
     const renderItem = staticData.map((item, index) => (
         <SearchWeb 
         key = { index}

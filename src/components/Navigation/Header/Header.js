@@ -37,7 +37,6 @@ class Header extends React.Component {
 
   handleMenuClose = () => {
     this.setState({ anchorEl: null });
-    this.handleMobileMenuClose();
   };
 
   inputChangehandler = event => {
@@ -140,7 +139,6 @@ class Header extends React.Component {
         <div className = "render-menu">
         {renderMenu}
         </div>
-      
       </div>
     );
   }
