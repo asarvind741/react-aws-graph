@@ -3,19 +3,14 @@ import SearchWeb from './SearchWeb';
 
 class SearchWebs extends React.Component {
 
-    
-
-
 render(){
-    const { staticData, serchTerm } = this.props;
+    console.log("assss", this.props.staticData)
+    const { staticData } = this.props;
     const renderItem = staticData.map((item, index) => (
         <SearchWeb 
         key = { index}
         item = {item} />
      ))
-     
-
-    
      let showResult =  (
         <Fragment>
          <h4 className = "heading-searhweb">Web</h4>

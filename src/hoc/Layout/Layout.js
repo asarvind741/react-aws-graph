@@ -51,10 +51,7 @@ class Layout extends React.Component {
                     closed={this.openMeunHandler} 
                     />: null}
                 <div className = "container">
-                <div>
-                { this.props.children }
-                </div>
-                
+                { this.props.children }                
                 </div>
             </Fragment>
         )

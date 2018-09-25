@@ -1,0 +1,13 @@
+.row-user-avatar{
+    display: 'flex';
+    justify-content: 'center';
+}
+
+.avatar-sub {
+    margin: 10;
+}
+
+.bigAvatar {
+    width: 60;
+    height: 60;
+}
