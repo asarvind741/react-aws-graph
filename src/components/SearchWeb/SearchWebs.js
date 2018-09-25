@@ -2,26 +2,40 @@ import React, { Fragment } from 'react';
 import SearchWeb from './SearchWeb';
 
 class SearchWebs extends React.Component {
+
     
 
-componentWillReceiveProps(nextProps){
-    console.log("next props", nextProps)
-    // this.props = nextProps;
-}
 
 render(){
-    const { data } = this.props;
-    console.log("data", this.props)
-    const renderItem = data.map(item => (
-        <SearchWeb item = {item} />
+    const { staticData, serchTerm } = this.props;
+    const renderItem = staticData.map((item, index) => (
+        <SearchWeb 
+        key = { index}
+        item = {item} />
      ))
+     
+
+    
+     let showResult =  (
+        <Fragment>
+         <h4 className = "heading-searhweb">Web</h4>
+        { renderItem}
+        <h4 className = "heading-searhweb">Database</h4>
+     </Fragment>
+    )
+
+    if(staticData.length == 0){
+        showResult = (
+            <Fragment>
+            No Result Found..
+        </Fragment>
+        )
+    }
 
    return  (
        <Fragment>
-        <h4 className = "heading-searhweb">Web</h4>
-      {(this.props.data.length>0) ? { renderItem} : ''}
-       <h4 className = "heading-searhweb">Database</h4>
-    </Fragment>
+       { showResult }
+      </Fragment>
    )
 }
 }
