@@ -44,7 +44,7 @@ class Header extends React.Component {
 
   inputChangehandler = event => {
     this.setState({
-      webData: [],
+      webDummyData: [],
       lexcenData: []
     })
     let webdata = [];
@@ -59,7 +59,7 @@ class Header extends React.Component {
             if (item[key].indexOf(check) >= 0) {
               webdata.push(item[key])
               this.setState({
-                webData: webdata
+                webDummyData: webdata
               })
             }
           }
@@ -146,7 +146,7 @@ class Header extends React.Component {
                     {(this.state.webData && this.state.search != '') ?
                     <ul className="search-reasult">
                      <SearchWebs 
-                     webData = { this.state.webData }
+                     webData = { this.state.webDummyData }
                      lexcenData = { this.state.lexcenData }
                      searchTerm = { this.state.search} />
                     </ul>
