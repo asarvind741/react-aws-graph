@@ -12,7 +12,7 @@ const menu = (props) => {
     })
 
     return ( 
-    <ul className = "sub-menu">
+    <ul className = "sub-menu subClass">
     { menuItem }
     </ul>)
 

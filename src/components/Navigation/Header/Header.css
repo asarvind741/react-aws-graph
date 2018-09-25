@@ -3,12 +3,10 @@
     flex-grow: 1 !important;
     color: #48a1e7  !important;
 }
-
 .MenuButton {
     margin-left: -12;
     margin-right: 20;
 }
-
 .Serach {
     background-color:white;
     border-radius: 0;
@@ -33,13 +31,11 @@
     display: inline-block;
     position: relative;
     width: 50%;
-    left: -200px;
-    top: 9px;
 }
 span.search-icon {
     position: absolute;
-    right: 77px;
-    top: 4px;
+    right: 75px;
+    top: 6px;
 }
 .search-wrapper input {
     padding-left: 15px;
@@ -56,31 +52,26 @@ span.search-icon {
 .logo-text {
     font-size: 12px;
 }
-
 .data-search-class input {
     border-radius: 0;
 }
-
 .card-account {
     z-index: 200px;
     width: 200px;
     height: 200px;
 }
-
 .user-name-header {
-
-    font-size: 40px;
-    font-weight: 400;
-    font-style: bolder;
-    color: black;
     padding: 10px;
-
+    display: inline-block !important;
+    vertical-align: top;
+    width: 76%;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
 }
-
 .render-menu {
     width: 800px;
 }
-
 .web-search {
     background-color: white !important;
     position: absolute
@@ -92,23 +83,26 @@ ul.search-reasult {
     position: absolute;
     background: #fff;
     width: 402px;
-    left: 69px;
-    top: 46px;
+    left:75px;
+    top: 35px;
     padding: 15px 0;
     border: 1px solid #ccc;
     border-radius: 0 0 4px 4px;
 }
-
-ul.search-reasult li {
-    display: block;
-    color: #000;
-    margin: 0 0 7px;
-    /* border-bottom: 1px solid #ccc; */
-    padding-bottom: 7px;
-    padding-left: 15px;
-    padding-right: 15px;
+.heading-searhweb.borderClass{
+    border-bottom: none;
+    background-color: #e6e6e6;
+    text-align: left;
+    padding: 5px;
 }
-
+ul.search-reasult li {
+    border-bottom: 1px solid #ccc;
+    color: #000;
+    display: block;
+    margin: 0;
+    padding: 8px 0;
+    text-align: center;
+}
 ul.search-reasult li:hover {
     background-color: rgb(231, 114, 114);
 }
@@ -117,12 +111,58 @@ ul.search-reasult li:last-child {
     padding-bottom: 0;
     border-bottom: none;
 }
-
+.lisitng {
+    height: 360px;
+    overflow-y: scroll;
+}
 h4.heading-searhweb {
-    background-color: #eae2e2;
+    border-bottom: 1px solid #ccc;
     color: #1f0cbd;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 8px 0;
     text-align: center;
-    margin-top: 0px;
-    height: 34px;
-    padding: 5px 0 0 0
+}
+.user-name-header strong{
+    display: block;
+}
+.close-icon {
+    float: right;
+    position: relative;
+    right: 10px;
+}
+.row-user-avatar .avatar-sub {
+    cursor: pointer;
+    background: #000;
+    color: #48a1e7;
+    border: 3px solid rgba(72, 161, 231, 0.6);
+    font-weight: 600;
+}
+.user-details {
+    padding: 5px 10px 10px;
+}
+
+.role {
+    display: block;
+}
+
+.user-details:focus {
+    outline: none;
+}
+
+.signout-menu {
+    border-top: 2px solid rgb(230, 200, 200) !important;
+    cursor: default !important;
+}
+.signout-menu:hover {
+    background: none !important;
+}
+.signout-menu button {
+    background: none;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+    font-size: 14px;
+    height: 30px;
+    border-radius: 3px;
+    cursor: pointer;
 }

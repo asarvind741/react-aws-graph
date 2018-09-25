@@ -36,6 +36,12 @@ class Header extends React.Component {
     this.setState({ anchorEl: null });
   };
 
+  autoCompleteHandler = () => {
+    if(this.state.webData.length>0){
+      console.log("sdd")
+    }
+  }
+
   inputChangehandler = event => {
     this.setState({
       webData: [],
@@ -62,7 +68,7 @@ class Header extends React.Component {
         lexcenDummyData.forEach(item => {
           const check = this.state.search;
           for (let key in item) {
-            console.log("asss", item)
+
             item[key] = JSON.stringify(item[key]);
             if (item[key].indexOf(check) >= 0 ) {
               lexcenData.push(item[key])
@@ -82,26 +88,32 @@ class Header extends React.Component {
     const { currentUser } = this.props;
     const userName = currentUser.firstName + ' ' + currentUser.lastName;
     const role = currentUser.role;
+
+    const email = currentUser.email;
     const isMenuOpen = Boolean(anchorEl);
     const initalCharacter = userName.substring(0, 1);
 
     const renderMenu = (
-      <Menu style = {{ 'width': '100%'}}
+      <Menu style = {{ 'width': '100%', 'top': '50px'}}
         anchorEl={anchorEl}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMenuOpen}
         onClose={this.handleMenuClose}
-        // onMouseOut = { this.handleProfileMenuClose }
         >
-        <Typography className = "user-name-header">
-          <strong>{ userName}</strong>
-        </Typography>
-        <Typography className = "user-name-header">
-          { role }
-        </Typography>
-        <MenuItem onClick={this.handleClose}>My account</MenuItem>
-        <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+        <div className="user-details">
+          <UserAvatar 
+              clicked = { this.handleProfileMenuOpen }
+              initalCharacter = { initalCharacter } />
+          <Typography className = "user-name-header">
+            <strong>{ userName}</strong>
+            { email }
+            <span className = "role">{ role }</span>
+          </Typography>
+        </div>
+        <MenuItem onClick={this.handleClose} className = "signout-menu">
+        <button>Sign Out</button>
+        </MenuItem>
         
       </Menu>
     );
@@ -127,6 +139,7 @@ class Header extends React.Component {
                         className = "Serach"
                         placeholder="Search…"
                         disableUnderline
+                        autoComplete = { this.autoCompleteHandler }
                         onChange = { this.inputChangehandler }
                     />
                     <span className="search-icon"><SearchIcon /></span>

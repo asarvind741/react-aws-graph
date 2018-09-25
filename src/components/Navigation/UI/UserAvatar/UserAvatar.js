@@ -10,11 +10,7 @@ const userAvatar = (props) => {
     }
     else{
     src =  props.initalCharacter;
-    console.log("assssssss", src)
-    }
-     
-     console.log("assssssss", src)
-    
+    }    
  
   return (
     <div className="row-user-avatar">

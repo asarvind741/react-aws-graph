@@ -19,9 +19,11 @@ render(){
 
      let showResult =  (
         <Fragment>
-         <h4 className = "heading-searhweb">Web</h4>
+         <h4 className = "heading-searhweb borderClass">Web</h4>
+         <div className = "listing"></div>
         { renderWebData}
-        <h4 className = "heading-searhweb">Database</h4>
+        <h4 className = "heading-searhweb borderClass">Database</h4>
+        <div className = "listing"></div>
         {renderLexcenData }
      </Fragment>
     )
