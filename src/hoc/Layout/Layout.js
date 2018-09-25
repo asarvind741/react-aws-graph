@@ -3,6 +3,8 @@ import userList from '../../data/user.json';
 import { ReactiveBase } from '@appbaseio/reactivesearch';
 import Header from '../../components/Navigation/Header/Header';
 import OpenMenuDrawer from '../../components/Navigation/OpenMenuDrawer/OpenMenuDrawer';
+import './Layout.css';
+
 class Layout extends React.Component {
 
     state = {
@@ -12,12 +14,14 @@ class Layout extends React.Component {
     }
 
     componentDidMount(){
+        console.log('user ;ostssssssss', userList[0])
         this.setState({
             user:userList[0]
         })
     }
 
     openMeunHandler = () => {
+
         this.setState((prevState) => {
             return { openMenu: !prevState.openMenu}
         })
@@ -44,10 +48,11 @@ class Layout extends React.Component {
                 {(this.state.openMenu)?
                  <OpenMenuDrawer
                     open={this.state.openMenu}
-                    closed={this.openMeunHandler} />: null}
+                    closed={this.openMeunHandler} 
+                    />: null}
                 <div className = "container">
                 <div>
-                {React.cloneElement(this.props.children, {...this.props})}  
+                { this.props.children }
                 </div>
                 
                 </div>

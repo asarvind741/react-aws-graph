@@ -47,8 +47,9 @@ class NavigationItem extends React.Component {
             {/* {(this.state.showMenu) ? <Menu 
             className = "sub-menu-class"
             items = {this.props.subMenu} />: '' } */}
-            {(this.state.showMenu) ? <Menu className = "sub-menu"
-            items = { this.props.subMenu} /> : '' }
+            {/* {(this.state.showMenu) ?  */}
+            <Menu className = "sub-menu"
+            items = { this.props.subMenu} /> 
     </li>
     )
 }

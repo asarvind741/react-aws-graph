@@ -71,6 +71,9 @@ class Header extends React.Component {
     const { currentUser } = this.props;
     const userName = currentUser.firstName + ' ' + currentUser.lastName;
     const role = currentUser.role;
+
+    const email = currentUser.email;
+    console.log("email", currentUser.email)
     const isMenuOpen = Boolean(anchorEl);
 
     const renderMenu = (
@@ -83,12 +86,12 @@ class Header extends React.Component {
         onMouseOut = { this.handleProfileMenuClose }>
         <Typography className = "user-name-header">
           <strong>{ userName}</strong>
+          { email }
         </Typography>
         <Typography className = "user-name-header">
           { role }
         </Typography>
-        <MenuItem onClick={this.handleClose}>My account</MenuItem>
-        <MenuItem onClick={this.handleClose}>Logout</MenuItem>
+        <MenuItem onClick={this.handleClose}>Sign Out</MenuItem>
         
       </Menu>
     );
