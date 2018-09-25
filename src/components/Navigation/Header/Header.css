@@ -90,13 +90,13 @@ ul.search-reasult {
     position: absolute;
     background: #fff;
     width: 402px;
-    left:45px;
+    left:51px;
     top: 35px;
     padding: 15px 0;
     border: 1px solid #ccc;
     border-radius: 0 0 4px 4px;
 }
-
+.heading-searhweb.borderClass{border-bottom: none;}
 ul.search-reasult li {
     /* display: block;
     color: #000;
@@ -121,7 +121,10 @@ ul.search-reasult li:last-child {
     padding-bottom: 0;
     border-bottom: none;
 }
-
+.lisitng {
+    height: 360px;
+    overflow-y: scroll;
+}
 h4.heading-searhweb {
      /* background-color: #eae2e2;
     color: #1f0cbd;
