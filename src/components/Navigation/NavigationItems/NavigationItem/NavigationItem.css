@@ -6,7 +6,7 @@
     font-style: normal;
     font-weight: 500;
     margin: 0;
-    padding: 15px 0 10px 15px;
+    padding: 15px 0 15px 15px;
     vertical-align: top;
     width: 50%;
     word-wrap: break-word;
@@ -21,7 +21,7 @@
     width: 200px;
     padding-left: 15px;
     left: 0;
-    top: 45px;
+    top: 52px;
 }
 .NavigationItems li.NavigationItem:last-child{width:100%;}
 
