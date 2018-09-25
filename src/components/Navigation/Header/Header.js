@@ -1,8 +1,5 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import {
-	DataSearch
-} from '@appbaseio/reactivesearch';
 import './Header.css';
 import logo from '../../../asstes/Lexxcen_logo-0.png';
 import AppBar from '@material-ui/core/AppBar';
@@ -11,10 +8,10 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import Input from '@material-ui/core/Input';
 import SearchIcon from '@material-ui/icons/Search';
-import webData from '../../../data/elastic-search.json';
+import webDummyData from '../../../data/search-web.json';
+import lexcenDummyData from '../../../data/search-lexcen.json';
 import SearchWebs from '../../../components/SearchWeb/SearchWebs';
 import UserAvatar from '../UI/UserAvatar/UserAvatar';
 
@@ -23,6 +20,7 @@ class Header extends React.Component {
   state = {
     anchorEl: null,
     webData: [],
+    lexcenData: [],
     search: ''
   };
 
@@ -40,20 +38,36 @@ class Header extends React.Component {
 
   inputChangehandler = event => {
     this.setState({
-      webData: []
+      webData: [],
+      lexcenData: []
     })
-    let data = [];
+    let webdata = [];
+    let lexcenData = [];
     this.setState({
         search: event.target.value
       }, () => {
-        webData.forEach(item => {
+        webDummyData.forEach(item => {
 
           const check = this.state.search;
           for (let key in item) {
             if (item[key].indexOf(check) >= 0) {
-              data.push(item[key])
+              webdata.push(item[key])
               this.setState({
-                webData: data
+                webData: webdata
+              })
+            }
+          }
+        });
+
+        lexcenDummyData.forEach(item => {
+          const check = this.state.search;
+          for (let key in item) {
+            console.log("asss", item)
+            item[key] = JSON.stringify(item[key]);
+            if (item[key].indexOf(check) >= 0 ) {
+              lexcenData.push(item[key])
+              this.setState({
+                lexcenData: lexcenData
               })
             }
           }
@@ -70,7 +84,6 @@ class Header extends React.Component {
     const role = currentUser.role;
     const isMenuOpen = Boolean(anchorEl);
     const initalCharacter = userName.substring(0, 1);
-    console.log("initial character", initalCharacter)
 
     const renderMenu = (
       <Menu style = {{ 'width': '100%'}}
@@ -120,7 +133,8 @@ class Header extends React.Component {
                     {(this.state.webData && this.state.search != '') ?
                     <ul className="search-reasult">
                      <SearchWebs 
-                     staticData = { this.state.webData }
+                     webData = { this.state.webData }
+                     lexcenData = { this.state.lexcenData }
                      searchTerm = { this.state.search} />
                     </ul>
                     : ''}
