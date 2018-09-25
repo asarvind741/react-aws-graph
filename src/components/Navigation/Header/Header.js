@@ -16,7 +16,8 @@ import Input from '@material-ui/core/Input';
 import SearchIcon from '@material-ui/icons/Search';
 import webData from '../../../data/elastic-search.json';
 import SearchWebs from '../../../components/SearchWeb/SearchWebs';
-import UserAvatar from '../UI/UserAvatar/UserAvatar';
+
+
 
 
 class Header extends React.Component {
@@ -36,6 +37,7 @@ class Header extends React.Component {
 
   handleMenuClose = () => {
     this.setState({ anchorEl: null });
+    this.handleMobileMenuClose();
   };
 
   inputChangehandler = event => {
@@ -44,22 +46,23 @@ class Header extends React.Component {
     })
     let data = [];
     this.setState({
-        search: event.target.value
+      search: event.target.value
+    }, () => {
+      webData.forEach(item => {
+        const title = item.title;
+        const check = this.state.search;
+        if(title.toLowerCase().indexOf(check)>=0){
+          data.push(item)
+          this.setState({webData: data})
+        }
       }, () => {
-        webData.forEach(item => {
-
-          const check = this.state.search;
-          for (let key in item) {
-            if (item[key].indexOf(check) >= 0) {
-              data.push(item[key])
-              this.setState({
-                webData: data
-              })
-            }
-          }
-        });
+        this.setState({webData: data})
       })
-    }
+    }); 
+    
+
+    
+  }
 
   
 
@@ -72,8 +75,6 @@ class Header extends React.Component {
     const email = currentUser.email;
     console.log("email", currentUser.email)
     const isMenuOpen = Boolean(anchorEl);
-    const initalCharacter = userName.substring(0, 1);
-    console.log("initial character", initalCharacter)
 
     const renderMenu = (
       <Menu style = {{ 'width': '100%'}}
@@ -82,8 +83,7 @@ class Header extends React.Component {
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMenuOpen}
         onClose={this.handleMenuClose}
-        // onMouseOut = { this.handleProfileMenuClose }
-        >
+        onMouseOut = { this.handleProfileMenuClose }>
         <Typography className = "user-name-header">
           <strong>{ userName}</strong>
           { email }
@@ -130,15 +130,20 @@ class Header extends React.Component {
               </div>
             </div>
             <div className="account-section header-col">           
-             <UserAvatar 
-             clicked = { this.handleProfileMenuOpen }
-             initalCharacter = { initalCharacter } />
+              <IconButton
+                aria-owns={isMenuOpen ? 'material-appbar' : null}
+                aria-haspopup="true"
+                onMouseOver={this.handleProfileMenuOpen}
+                color="inherit">
+                <AccountCircle />
+              </IconButton>
             </div>           
           </Toolbar>
         </AppBar>
         <div className = "render-menu">
         {renderMenu}
         </div>
+      
       </div>
     );
   }
