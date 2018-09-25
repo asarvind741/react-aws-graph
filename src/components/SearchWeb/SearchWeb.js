@@ -2,7 +2,7 @@ import React from 'react';
 
 const  serchWeb = (props) => {
     return (
-        <li>{ props.item.title }</li>
+        <li>{ props.item }</li>
     )
 }
 

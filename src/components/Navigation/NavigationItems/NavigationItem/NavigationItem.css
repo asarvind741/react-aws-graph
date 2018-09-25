@@ -6,7 +6,6 @@
     font-weight: 600;
     font-style: normal;
     padding: 10px;
-    font-family: monospace;
     font-size: 21px;
 }
 
@@ -24,7 +23,6 @@ li.NavigationItem :hover {
         font-weight: 600;
         font-style: normal;
         padding: 10px;
-        font-family: monospace;
         font-size: 21px;
         cursor: pointer;
     }

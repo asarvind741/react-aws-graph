@@ -1,26 +1,122 @@
 [
     {
-        "title" : "Japan",
-        "description":"Technology"
+      "ID": "sample text",
+      "Business Name": "Berkeley Vale Medical Centre",
+      "Business Address": "3/10 Lorraine Ave",
+      "Monday Open Hours": "Berkeley Vale NSW 2261",
+      "Tuesday Open Hours": "8:30AM - 5:30PM",
+      "Wednesday Open Hours": "8:30AM - 5:30PM",
+      "Thursday Open Hours": "sample text",
+      "Friday Open Hours": "sample text",
+      "Saturday Open Hours": "8:30AM - 5:00PM",
+      "Sunday Open Hours": "9:00AM - 12:00PM",
+      "Business Type": "Closed",
+      "Business Primary Phone Number": "Medical",
+      "Primary Phone Number": "+61 2 4388 3985"
     },
     {
-        "title" : "Honkong",
-        "description":"Modern"
+      "ID": "sample text",
+      "Business Name": "LJ Hooker Gosford",
+      "Business Address": "137-139 Mann St",
+      "Monday Open Hours": "Gosford NSW 2250",
+      "Tuesday Open Hours": "",
+      "Wednesday Open Hours": "",
+      "Thursday Open Hours": "sample text",
+      "Friday Open Hours": "sample text",
+      "Saturday Open Hours": "sample text",
+      "Sunday Open Hours": "sample text",
+      "Business Type": "sample text",
+      "Business Primary Phone Number": "sample text",
+      "": "sample text"
     },
     {
-        "title" : "United State",
-        "description":"Developed"
+      "ID": "sample text",
+      "Business Name": "Splash's Pools",
+      "Business Address": "2/88 Pacific Hwy",
+      "Monday Open Hours": "Tuggerah NSW 2259",
+      "Tuesday Open Hours": "",
+      "Wednesday Open Hours": "",
+      "Thursday Open Hours": "sample text",
+      "Friday Open Hours": "sample text",
+      "Saturday Open Hours": "sample text",
+      "Sunday Open Hours": "sample text",
+      "Business Type": "sample text",
+      "Business Primary Phone Number": "sample text",
+      "Primary Phone Number": "sample text"
     },
     {
-        "title" : "England",
-        "description":"Architecture"
+      "ID": "sample text",
+      "Business Name": "Intercept Law",
+      "Business Address": "2/86 Pacific Hwy",
+      "Monday Open Hours": "Tuggerah NSW 2259",
+      "Tuesday Open Hours": "",
+      "Wednesday Open Hours": "",
+      "Thursday Open Hours": "sample text",
+      "Friday Open Hours": "sample text",
+      "Saturday Open Hours": "sample text",
+      "Sunday Open Hours": "sample text",
+      "Business Type": "sample text",
+      "Business Primary Phone Number": "sample text",
+      "Primary Phone Number": "sample text"
     },
     {
-        "title" : "India",
-        "description":"Democracy"
+      "ID": "sample text",
+      "Business Name": "JAX Tyres Wyong",
+      "Business Address": "13 Johnson Rd",
+      "Monday Open Hours": "Wyong NSW 2259",
+      "Tuesday Open Hours": "",
+      "Wednesday Open Hours": "",
+      "Thursday Open Hours": "sample text",
+      "Friday Open Hours": "sample text",
+      "Saturday Open Hours": "sample text",
+      "Sunday Open Hours": "sample text",
+      "Business Type": "sample text",
+      "Business Primary Phone Number": "sample text",
+      "Primary Phone Number": "sample text"
     },
     {
-        "title" : "France",
-        "description":"Powerful"
+      "ID": "sample text",
+      "Business Name": "Sam's Thai",
+      "Business Address": "89 Rangers Rd",
+      "Monday Open Hours": "Cremorne NSW 2090",
+      "Tuesday Open Hours": "",
+      "Wednesday Open Hours": "",
+      "Thursday Open Hours": "sample text",
+      "Friday Open Hours": "sample text",
+      "Saturday Open Hours": "sample text",
+      "Sunday Open Hours": "sample text",
+      "Business Type": "sample text",
+      "Business Primary Phone Number": "sample text",
+      "Primary Phone Number": "sample text"
+    },
+    {
+      "ID": "sample text",
+      "Business Name": "WEB Test1",
+      "Business Address": "666 Lexcen Rd",
+      "Monday Open Hours": "Melbus",
+      "Tuesday Open Hours": "QLD",
+      "Wednesday Open Hours": "sample text",
+      "Thursday Open Hours": "sample text",
+      "Friday Open Hours": "sample text",
+      "Saturday Open Hours": "sample text",
+      "Sunday Open Hours": "sample text",
+      "Business Type": "sample text",
+      "Business Primary Phone Number": "sample text",
+      "Primary Phone Number": "sample text"
+    },
+    {
+      "ID": "sample text",
+      "Business Name": "WEB Test2",
+      "Business Address": "666 Lexcen Rd",
+      "Monday Open Hours": "Melbus",
+      "Tuesday Open Hours": "QLD",
+      "Wednesday Open Hours": "sample text",
+      "Thursday Open Hours": "sample text",
+      "Friday Open Hours": "sample text",
+      "Saturday Open Hours": "sample text",
+      "Sunday Open Hours": "sample text",
+      "Business Type": "sample text",
+      "Business Primary Phone Number": "sample text",
+      "Primary Phone Number": "sample text"
     }
-]
+  ]
