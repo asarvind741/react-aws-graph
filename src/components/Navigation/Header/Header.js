@@ -8,14 +8,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
-// import Input from '@material-ui/core/Input';
-// import SearchIcon from '@material-ui/icons/Search';
-// import webDummyData from '../../../data/search-web.json';
-// import lexcenDummyData from '../../../data/search-lexcen.json';
-// import SearchWebs from '../../../components/SearchWeb/SearchWebs';
 import UserAvatar from '../UI/UserAvatar/UserAvatar';
 import SeachComponent from '../../SearchComponent/SearchComponent'
-
 
 class Header extends React.Component {
   state = {
@@ -43,46 +37,7 @@ class Header extends React.Component {
     }
   }
 
-  // inputChangehandler = event => {
-  //   this.setState({
-  //     webDummyData: [],
-  //     lexcenData: []
-  //   })
-  //   let webdata = [];
-  //   let lexcenData = [];
-  //   this.setState({
-  //       search: event.target.value
-  //     }, () => {
-  //       webDummyData.forEach(item => {
-
-  //         const check = this.state.search;
-  //         for (let key in item) {
-  //           if (item[key].indexOf(check) >= 0) {
-  //             webdata.push(item[key])
-  //             this.setState({
-  //               webDummyData: webdata
-  //             })
-  //           }
-  //         }
-  //       });
-
-  //       lexcenDummyData.forEach(item => {
-  //         const check = this.state.search;
-  //         for (let key in item) {
-
-  //           item[key] = JSON.stringify(item[key]);
-  //           if (item[key].indexOf(check) >= 0 ) {
-  //             lexcenData.push(item[key])
-  //             this.setState({
-  //               lexcenData: lexcenData
-  //             })
-  //           }
-  //         }
-  //       });
-  //     })
-  //   }
-
-  
+   
 
   render() {
     const { anchorEl } = this.state;
@@ -136,22 +91,6 @@ class Header extends React.Component {
             </div>
             <div className="header-search header-col">
                 <div className="search-wrapper">
-                    {/* <Input
-                        className = "Serach"
-                        placeholder="Search…"
-                        disableUnderline
-                       
-                        onChange = { this.inputChangehandler }
-                    />
-                    <span className="search-icon"><SearchIcon /></span>
-                    {(this.state.webData && this.state.search != '') ?
-                    <ul className="search-reasult">
-                     <SearchWebs 
-                     webData = { this.state.webDummyData }
-                     lexcenData = { this.state.lexcenData }
-                     searchTerm = { this.state.search} />
-                    </ul>
-                    : ''} */}
                     <SeachComponent />
               </div>
             </div>

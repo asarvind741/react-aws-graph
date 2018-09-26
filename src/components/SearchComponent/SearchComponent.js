@@ -10,10 +10,9 @@ import {
     SectionTitle
   } from './AssocicatedSubComponents/AssociatedSubComponents';
   import webDummyData from '../../data/search-web';
-  import lexcenDummyData from '../../data/search-lexcen';
   import  { Div } from 'glamorous';
   import { css } from 'glamor';
-import Downshift from 'downshift';
+  import Downshift from 'downshift';
 
 
 function escapeRegexCharacters(str) {
@@ -21,7 +20,6 @@ function escapeRegexCharacters(str) {
   }
   
   function SectionExampleDownshift({ items, ...rest }) {
-      console.log("all items", items)
     return (
       <Downshift {...rest}>
         {({
@@ -103,12 +101,10 @@ function escapeRegexCharacters(str) {
     }
   
     handleStateChange = (changes, downshiftState) => {
-        console.log("changes", changes)
       if (changes.hasOwnProperty('inputValue')) {
         this.setState(
             { webDummyData: this.getItems(changes.inputValue) },
             () => {
-                console.log("websssssssssssss", this.state.webDummyData)
             }
             );
       }
@@ -123,8 +119,6 @@ function escapeRegexCharacters(str) {
       const escapedValue = escapeRegexCharacters(value.trim());
   
       if (escapedValue === '') {
-          
-        // return this.state.webDummyData;
         return []
       }
   
@@ -134,19 +128,38 @@ function escapeRegexCharacters(str) {
         .map(section => {
           return {
             title: section.title,
-            data: section.data.filter(item => regex.test(item['Business Name'])
-            
+            data: section.data.filter(
+              item => regex.test(
+                item['Business Name'], 
+                item['Business Address'],
+                item['Monday Open Hours'],
+                item['Tuesday Open Hours'],
+                item['Wednesday Open Hours'],
+                item['Thursday Open Hours'],
+                item['Friday Open Hours'],
+                item['Saturday Address'],
+                item['Sunday Open Hours'],
+                item['Business Type'],
+                item['Business Primary Phone Number'],
+                item['Primary Phone Number'],
+                item['UID'],
+                item['SolutionID'],
+                item['SolDescription'],
+                item['Business Name'],
+                item['Sites'],
+                item['User'],
+                item['Devices'],
+                item['Created'],
+                item['last edition'],
+                item['Status'],
+                item['Author'],
+                item['BillingID']
+                )
             )
           };
         })
         .filter(section => section.data.length > 0);
     };
-
-    
-  
-    // itemToString(i) {
-    //   return i ? i.name : '';
-    // }
   
     render() {
       return (
@@ -162,7 +175,6 @@ function escapeRegexCharacters(str) {
             onStateChange={this.handleStateChange}
             onChange={this.handleChange}
             items={this.state.webDummyData}
-            // itemToString={this.itemToString}
           />
         </Div>
       );
