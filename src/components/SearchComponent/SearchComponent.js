@@ -105,6 +105,7 @@ function escapeRegexCharacters(str) {
         this.setState(
             { webDummyData: this.getItems(changes.inputValue) },
             () => {
+                console.log("websssssssssssss", this.state.webDummyData)
             }
             );
       }
@@ -128,33 +129,8 @@ function escapeRegexCharacters(str) {
         .map(section => {
           return {
             title: section.title,
-            data: section.data.filter(
-              item => regex.test(
-                item['Business Name'], 
-                item['Business Address'],
-                item['Monday Open Hours'],
-                item['Tuesday Open Hours'],
-                item['Wednesday Open Hours'],
-                item['Thursday Open Hours'],
-                item['Friday Open Hours'],
-                item['Saturday Address'],
-                item['Sunday Open Hours'],
-                item['Business Type'],
-                item['Business Primary Phone Number'],
-                item['Primary Phone Number'],
-                item['UID'],
-                item['SolutionID'],
-                item['SolDescription'],
-                item['Business Name'],
-                item['Sites'],
-                item['User'],
-                item['Devices'],
-                item['Created'],
-                item['last edition'],
-                item['Status'],
-                item['Author'],
-                item['BillingID']
-                )
+            data: section.data.filter(item => regex.test(item['Business Name'])
+            
             )
           };
         })
