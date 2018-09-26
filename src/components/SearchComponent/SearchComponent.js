@@ -1,4 +1,5 @@
 import React from 'react';
+import './SearchComponent.css';
 import {
     Menu,
     ControllerButton,
@@ -55,17 +56,17 @@ function escapeRegexCharacters(str) {
             </Div>
             {!isOpen
               ? null
-              : <Menu>
+              : <Menu className="dropDown">
                   {items.reduce((result, section, sectionIndex) => {
                     result.sections.push(
                       <Section key={sectionIndex}> 
-                        <SectionTitle>
+                        <SectionTitle className="titleName">
                           {section.title}
                         </SectionTitle>
                         {section.data.map((item, itemIndex) => {
                           const index = result.itemIndex++;
                           return (
-                            <Item
+                            <Item 
                               key={itemIndex}
                               {...getItemProps({
                                 item: item,
@@ -139,7 +140,7 @@ function escapeRegexCharacters(str) {
   
     render() {
       return (
-        <Div
+        <Div 
           css={{
             display: 'flex',
             justifyContent: 'center',

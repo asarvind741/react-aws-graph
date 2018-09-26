@@ -1,0 +1,10 @@
+.dropDown{
+    width:49.5%;
+    position: absolute;
+}
+.titleName{
+    padding-bottom: 15px!important;
+}
+.search-wrapper button{
+    outline: none;
+}
