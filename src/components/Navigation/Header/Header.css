@@ -18,6 +18,9 @@
 }
 .account-section.header-col {
     text-align: right;
+    position: relative;
+    z-index: 9999999;
+    left: -18px;
 }
 .account-section svg.MuiSvgIcon-root-50 {
     width: 40px;

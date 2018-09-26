@@ -17,6 +17,7 @@ const userAvatar = (props) => {
       <Avatar 
       alt="Image" className= "avatar-sub" 
       onClick = { props.clicked }
+      onMouseOver = { props.mouseOverData }
       >{ src }</Avatar>
     </div>
   );

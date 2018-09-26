@@ -16,7 +16,8 @@ class Header extends React.Component {
     anchorEl: null,
     webData: [],
     lexcenData: [],
-    search: ''
+    search: '',
+    show: false
   };
 
   handleProfileMenuOpen = event => {
@@ -31,11 +32,10 @@ class Header extends React.Component {
     this.setState({ anchorEl: null });
   };
 
-  autoCompleteHandler = () => {
-    if(this.state.webData.length>0){
-      return "Test"
-    }
-  }
+
+ 
+  
+
 
    
 
@@ -48,7 +48,7 @@ class Header extends React.Component {
     const email = currentUser.email;
     const isMenuOpen = Boolean(anchorEl);
     const initalCharacter = userName.substring(0, 1);
-
+    const title = "Account: " + userName + "\nEmail: " + email;
     const renderMenu = (
       <Menu style = {{ 'width': '100%', 'top': '50px'}}
         anchorEl={anchorEl}
@@ -94,8 +94,11 @@ class Header extends React.Component {
                     <SeachComponent />
               </div>
             </div>
-            <div className="account-section header-col">           
+            <div className="account-section header-col"
+            title = { title }
+            >           
              <UserAvatar 
+             mouseOverData = { this.mouseOverHandler }
              clicked = { this.handleProfileMenuOpen }
              initalCharacter = { initalCharacter } />
             </div>           

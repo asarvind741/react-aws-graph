@@ -75,7 +75,11 @@ function escapeRegexCharacters(str) {
                                 isSelected: selectedItem === item
                               })}
                             >
-                              {item['Business Name']}
+                              {(section.title === 'Web') ? item['Business Name'] : 
+                            <div>
+                              <strong>{item['Business Name']} - {item['SolutionID']}</strong>
+                              <p>{ item['SolDescription'] }</p>
+                            </div> }
                             </Item>
                           )
                         })}
@@ -106,7 +110,7 @@ function escapeRegexCharacters(str) {
         this.setState(
             { webDummyData: this.getItems(changes.inputValue) },
             () => {
-                console.log("websssssssssssss", this.state.webDummyData)
+                
             }
             );
       }
@@ -128,12 +132,22 @@ function escapeRegexCharacters(str) {
      
         return webDummyData
         .map(section => {
+          if(section.title === 'Web'){
           return {
             title: section.title,
             data: section.data.filter(item => regex.test(item['Business Name'])
             
             )
           };
+        }
+        else if (section.title === 'Lexcen'){
+          return {
+            title: section.title,
+            data: section.data.filter(item => regex.test(item['Business Name'])
+            
+            )
+          };
+        }
         })
         .filter(section => section.data.length > 0);
     };
