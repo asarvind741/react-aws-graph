@@ -1,4 +1,4 @@
-[
+export default [
     {
       "UID": 1111,
       "SolutionID": "SAN-1111",

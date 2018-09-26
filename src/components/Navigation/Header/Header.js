@@ -8,12 +8,13 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
-import Input from '@material-ui/core/Input';
-import SearchIcon from '@material-ui/icons/Search';
-import webDummyData from '../../../data/search-web.json';
-import lexcenDummyData from '../../../data/search-lexcen.json';
-import SearchWebs from '../../../components/SearchWeb/SearchWebs';
+// import Input from '@material-ui/core/Input';
+// import SearchIcon from '@material-ui/icons/Search';
+// import webDummyData from '../../../data/search-web.json';
+// import lexcenDummyData from '../../../data/search-lexcen.json';
+// import SearchWebs from '../../../components/SearchWeb/SearchWebs';
 import UserAvatar from '../UI/UserAvatar/UserAvatar';
+import SeachComponent from '../../SearchComponent/SearchComponent'
 
 
 class Header extends React.Component {
@@ -38,48 +39,48 @@ class Header extends React.Component {
 
   autoCompleteHandler = () => {
     if(this.state.webData.length>0){
-      console.log("sdd")
+      return "Test"
     }
   }
 
-  inputChangehandler = event => {
-    this.setState({
-      webDummyData: [],
-      lexcenData: []
-    })
-    let webdata = [];
-    let lexcenData = [];
-    this.setState({
-        search: event.target.value
-      }, () => {
-        webDummyData.forEach(item => {
+  // inputChangehandler = event => {
+  //   this.setState({
+  //     webDummyData: [],
+  //     lexcenData: []
+  //   })
+  //   let webdata = [];
+  //   let lexcenData = [];
+  //   this.setState({
+  //       search: event.target.value
+  //     }, () => {
+  //       webDummyData.forEach(item => {
 
-          const check = this.state.search;
-          for (let key in item) {
-            if (item[key].indexOf(check) >= 0) {
-              webdata.push(item[key])
-              this.setState({
-                webDummyData: webdata
-              })
-            }
-          }
-        });
+  //         const check = this.state.search;
+  //         for (let key in item) {
+  //           if (item[key].indexOf(check) >= 0) {
+  //             webdata.push(item[key])
+  //             this.setState({
+  //               webDummyData: webdata
+  //             })
+  //           }
+  //         }
+  //       });
 
-        lexcenDummyData.forEach(item => {
-          const check = this.state.search;
-          for (let key in item) {
+  //       lexcenDummyData.forEach(item => {
+  //         const check = this.state.search;
+  //         for (let key in item) {
 
-            item[key] = JSON.stringify(item[key]);
-            if (item[key].indexOf(check) >= 0 ) {
-              lexcenData.push(item[key])
-              this.setState({
-                lexcenData: lexcenData
-              })
-            }
-          }
-        });
-      })
-    }
+  //           item[key] = JSON.stringify(item[key]);
+  //           if (item[key].indexOf(check) >= 0 ) {
+  //             lexcenData.push(item[key])
+  //             this.setState({
+  //               lexcenData: lexcenData
+  //             })
+  //           }
+  //         }
+  //       });
+  //     })
+  //   }
 
   
 
@@ -135,11 +136,11 @@ class Header extends React.Component {
             </div>
             <div className="header-search header-col">
                 <div className="search-wrapper">
-                    <Input
+                    {/* <Input
                         className = "Serach"
                         placeholder="Search…"
                         disableUnderline
-                        autoComplete = { this.autoCompleteHandler }
+                       
                         onChange = { this.inputChangehandler }
                     />
                     <span className="search-icon"><SearchIcon /></span>
@@ -150,7 +151,8 @@ class Header extends React.Component {
                      lexcenData = { this.state.lexcenData }
                      searchTerm = { this.state.search} />
                     </ul>
-                    : ''}
+                    : ''} */}
+                    <SeachComponent />
               </div>
             </div>
             <div className="account-section header-col">           
