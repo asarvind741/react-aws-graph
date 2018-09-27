@@ -1,10 +1,10 @@
 import React from 'react';
 import './SolutionTitleBar.css';
 
-const solutionTitleBar = ({solutionTitleDetails}) => (
+const solutionTitleBar = ({solution}) => (
     <div className = "solution-title-bar">
         <p><strong>Company Name: </strong></p>
-        <p><strong>Solution ID: </strong></p>
+        <p><strong>Solution ID: </strong> {solution['ID']}</p>
         <p><strong>Solution Description: </strong></p>
         <p><strong>Solution Status: </strong></p>
         <p><strong>Mode: </strong></p>
