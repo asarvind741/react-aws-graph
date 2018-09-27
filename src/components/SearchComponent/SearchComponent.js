@@ -20,22 +20,22 @@ function escapeRegexCharacters(str) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
   
-  function SectionExampleDownshift({ items, ...rest }) {
+  function SectionExampleDownshift({itemToString, items, ...rest }) {
     return (
-      <Downshift {...rest}>
+      <Downshift itemToString={itemToString} {...rest}>
         {({
-          getLabelProps,
-          getInputProps,
-          getButtonProps,
-          getItemProps,
-          isOpen,
-          toggleMenu,
-          clearSelection,
-          selectedItem,
-          inputValue,
-          highlightedIndex
+         getLabelProps,
+         getInputProps,
+         getToggleButtonProps,
+         getItemProps,
+         isOpen,
+         toggleMenu,
+         clearSelection,
+         selectedItem,
+         inputValue,
+         highlightedIndex
         }) =>
-          <div className={css({ width: 250, margin: 'auto' })}>
+          <div className={css({ width: 400, margin: 0 })}>
             <Div position="relative">
               <Input
                 {...getInputProps({
@@ -50,7 +50,7 @@ function escapeRegexCharacters(str) {
                   >
                     <XIcon />
                   </ControllerButton>
-                : <ControllerButton {...getButtonProps()}>
+                : <ControllerButton {...getToggleButtonProps()}>
                     <ArrowIcon isOpen={isOpen} />
                   </ControllerButton>}
             </Div>
@@ -151,6 +151,10 @@ function escapeRegexCharacters(str) {
         })
         .filter(section => section.data.length > 0);
     };
+
+    itemToString(i) {
+      return i ? i.name : '';
+    }
   
     render() {
       return (
@@ -166,6 +170,7 @@ function escapeRegexCharacters(str) {
             onStateChange={this.handleStateChange}
             onChange={this.handleChange}
             items={this.state.webDummyData}
+            itemToString={this.itemToString}
           />
         </Div>
       );

@@ -32,6 +32,11 @@ class Header extends React.Component {
     this.setState({ anchorEl: null });
   };
 
+  signoutHandler =() =>{
+    // this.props.history.push('/');
+    this.handleProfileMenuClose();
+  }
+
 
  
   
@@ -68,7 +73,7 @@ class Header extends React.Component {
           </Typography>
         </div>
         <MenuItem onClick={this.handleClose} className = "signout-menu">
-        <button>Sign Out</button>
+        <button onClick = {this.signoutHandler}>Sign Out</button>
         </MenuItem>
         
       </Menu>
