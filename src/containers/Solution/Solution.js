@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './Solution.css';
 import { parse } from  'query-string';
 import { withRouter } from 'react-router-dom';
 import SolutionTitleBar from '../../components/Solution/SolutionTitleBar/SolutionTitleBar';
+import ScrollableTabsButtonPrevent from '../../components/Solution/Tabs/Tabs';
 import webAndLexcenData from '../../data/search-web';
 
 class Solution extends React.Component {
@@ -32,8 +33,12 @@ class Solution extends React.Component {
         
         return(
             <div>
-           {(this.state.selectedItem) ? <SolutionTitleBar 
-           solution = {this.state.selectedItem}/> : '' }
+           {(this.state.selectedItem) ? 
+           <Fragment>
+               <SolutionTitleBar 
+               solution = {this.state.selectedItem}/>
+               <ScrollableTabsButtonPrevent />
+               </Fragment> : '' }
             </div>
         )
     }
