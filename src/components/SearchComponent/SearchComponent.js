@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import './SearchComponent.css';
 import {
     Menu,
@@ -20,13 +21,96 @@ function escapeRegexCharacters(str) {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
   
-  function SectionExampleDownshift({itemToString, items, ...rest }) {
-    return (
-      <Downshift itemToString={itemToString} {...rest}>
+  class SeachComponent extends React.Component {
+    allItems = webDummyData;
+    state = { 
+        webDummyData: [],
+        selectedItem : ''
+
+    };
+
+    componentWillMount(){
+        this.setState({
+            webDummyData: this.allItems,
+        })
+    }
+  
+    handleStateChange = (changes, downshiftState) => {
+      if (changes.hasOwnProperty('inputValue')) {
+        this.setState(
+            { webDummyData: this.getItems(changes.inputValue) });
+      }
+    };
+  
+    handleChange = (selectedItem, downshiftState) => {
+
+      this.setState({ 
+        webDummyData: this.allItems
+       });
+
+    
+       
+    };
+  
+    getItems = value => {
+      let escapedValue = '';
+      if(value){
+        escapedValue = escapeRegexCharacters(value.trim());
+      }
+       
+  
+      if (escapedValue === '') {
+        return webDummyData
+      }
+  
+      const regex = new RegExp('^' + escapedValue, 'i');
+     
+        return webDummyData
+        .map(section => {
+          return {
+            title: section.title,
+            data: section.data.filter(item => regex.test(item['Business Name'])
+            
+            )
+        }
+        })
+        .filter(section => section.data.length > 0);
+    };
+
+    itemToString = (i) => {
+      return i ? i['Business Name'] : '';
+    }
+
+    submitSearchHandler = (event) => {
+      console.log("propssssssssss", this.props.history)
+      console.log('event is ------->', event.target.value);
+      if(event.keyCode === 13){
+        this.props.history.push({
+          pathname: 'search',
+          search: '?Business Name='+ event.target.value
+        })
+      }
+    }
+  
+    render() {
+      return (
+        <Div 
+          css={{
+            display: 'flex',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            textAlign: 'center'
+          }}
+        >
+           <Downshift 
+           onStateChange = {this.handleStateChange}
+           itemToString = { this.itemToString }
+           onChange = { this.handleChange}
+           >
         {({
          getLabelProps,
          getInputProps,
-         getToggleButtonProps,
+         getButtonProps,
          getItemProps,
          isOpen,
          toggleMenu,
@@ -41,8 +125,9 @@ function escapeRegexCharacters(str) {
                 {...getInputProps({
                   isOpen,
                   placeholder: 'Search'
+                 
                 })}
-              />
+                onKeyDown  = { this.submitSearchHandler }/>
               {selectedItem
                 ? <ControllerButton
                     onClick={clearSelection}
@@ -50,14 +135,14 @@ function escapeRegexCharacters(str) {
                   >
                     <XIcon />
                   </ControllerButton>
-                : <ControllerButton {...getToggleButtonProps()}>
+                : <ControllerButton {...getButtonProps()}>
                     <ArrowIcon isOpen={isOpen} />
                   </ControllerButton>}
             </Div>
             {!isOpen
               ? null
               : <Menu className="dropDown">
-                  {items.reduce((result, section, sectionIndex) => {
+                  {this.state.webDummyData.reduce((result, section, sectionIndex) => {
                     result.sections.push(
                       <Section key={sectionIndex}> 
                         <SectionTitle className="titleName">
@@ -90,91 +175,9 @@ function escapeRegexCharacters(str) {
                 </Menu>}
           </div>}
       </Downshift>
-    );
-  }
-  
-  class SeachComponent extends React.Component {
-    allItems = webDummyData;
-    state = { 
-        webDummyData: []
-    };
-
-    componentWillMount(){
-        this.setState({
-            webDummyData: webDummyData,
-        })
-    }
-  
-    handleStateChange = (changes, downshiftState) => {
-      if (changes.hasOwnProperty('inputValue')) {
-        this.setState(
-            { webDummyData: this.getItems(changes.inputValue) },
-            () => {
-                
-            }
-            );
-      }
-    };
-  
-    handleChange = (selectedItem, downshiftState) => {
-        
-      this.setState({ webDummyData: this.allItems });
-    };
-  
-    getItems = value => {
-      const escapedValue = escapeRegexCharacters(value.trim());
-  
-      if (escapedValue === '') {
-        return []
-      }
-  
-      const regex = new RegExp('^' + escapedValue, 'i');
-     
-        return webDummyData
-        .map(section => {
-          if(section.title === 'Web'){
-          return {
-            title: section.title,
-            data: section.data.filter(item => regex.test(item['Business Name'])
-            
-            )
-          };
-        }
-        else if (section.title === 'Lexcen'){
-          return {
-            title: section.title,
-            data: section.data.filter(item => regex.test(item['Business Name'])
-            
-            )
-          };
-        }
-        })
-        .filter(section => section.data.length > 0);
-    };
-
-    itemToString(i) {
-      return i ? i.name : '';
-    }
-  
-    render() {
-      return (
-        <Div 
-          css={{
-            display: 'flex',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            textAlign: 'center'
-          }}
-        >
-          <SectionExampleDownshift
-            onStateChange={this.handleStateChange}
-            onChange={this.handleChange}
-            items={this.state.webDummyData}
-            itemToString={this.itemToString}
-          />
         </Div>
       );
     }
   }
 
-  export default SeachComponent;
+  export default withRouter(SeachComponent);

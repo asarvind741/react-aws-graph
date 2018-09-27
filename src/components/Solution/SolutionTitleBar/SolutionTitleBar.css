@@ -1,0 +1,11 @@
+.solution-title-bar {
+    background-color: #48a1e7 ;
+    width: 100%;
+}
+
+.solution-title-bar p {
+    margin: 0;
+    padding: 25px;
+    color: white;
+    display: inline-block;
+}
