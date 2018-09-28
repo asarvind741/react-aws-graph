@@ -50,7 +50,7 @@ function CustomizedBadge(props) {
     classes={(errorCount>0) ? { tooltip: classes.warningTooltip }: {  tooltip: classes.errorTooltip }}>
     <IconButton aria-label="Info" >
       <Badge badgeContent={ totalCount } color="secondary" 
-      classes={(errorCount) ? { badge: classes.badge1 }: { badge: classes.badge2 }}>
+      classes={(errorCount) ? { badge: classes.badge2 }: { badge: classes.badge1 }}>
         <Error className = 'info-class'/>       
       </Badge>
     </IconButton>
