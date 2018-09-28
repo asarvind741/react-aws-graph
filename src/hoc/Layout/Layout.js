@@ -3,6 +3,7 @@ import userList from '../../data/user.json';
 import Header from '../../components/Navigation/Header/Header';
 import OpenMenuDrawer from '../../components/Navigation/OpenMenuDrawer/OpenMenuDrawer';
 import './Layout.css';
+import $ from 'jquery';
 
 class Layout extends React.Component {
 
@@ -16,13 +17,22 @@ class Layout extends React.Component {
         this.setState({
             user:userList[0]
         })
+
+        var width = $(window).width();
+        $('.static-class').css('width', width);
     }
 
     openMeunHandler = () => {
 
         this.setState((prevState) => {
             return { openMenu: !prevState.openMenu}
-        })
+        });
+
+        var width1 = $('.SideDrawer').width();
+        console.log("width", width1);
+        var width = $(window).width();
+        var reducedWidth = $('.static-class').width(width -394);
+        $('static-class').css('width', reducedWidth);
     }
     
     valueChangedHandler = value => {
@@ -33,6 +43,7 @@ class Layout extends React.Component {
 
     render(){
         console.log("children", this.props.children)
+        let attachedClasses = `container static-class`;
 
         return (
             <Fragment>
@@ -45,7 +56,7 @@ class Layout extends React.Component {
                     open={this.state.openMenu}
                     closed={this.openMeunHandler} 
                     />: null}
-                <div className = "container">
+                <div className = { attachedClasses }>
                 { this.props.children }                
                 </div>
             </Fragment>

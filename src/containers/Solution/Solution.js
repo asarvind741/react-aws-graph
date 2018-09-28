@@ -4,29 +4,61 @@ import { parse } from  'query-string';
 import { withRouter } from 'react-router-dom';
 import SolutionTitleBar from '../../components/Solution/SolutionTitleBar/SolutionTitleBar';
 import ScrollableTabsButtonPrevent from '../../components/Solution/Tabs/Tabs';
-import webAndLexcenData from '../../data/search-web';
+import solutionData from '../../data/solution-details';
 
 class Solution extends React.Component {
 
     state = {
-        selectedItem: {}
+        selectedItem: {},
+        found: false
     }
 
     componentDidMount(){
         const parsed = parse(this.props.location.search);
-        webAndLexcenData.forEach(item => {
-            console.log("item", item)
-            item.data.forEach(data1 => {
-                console.log("data1",data1['Business Name'])
-                if(data1['Business Name'] === parsed['Business Name']){
+        solutionData.forEach(item => {
+                if(item['Business Name'] === parsed['Business Name']){
                     this.setState({
-                        selectedItem: data1
+                        selectedItem: item
                     }, () => {
-                        console.log("data is", this.state.selectedItem)
+                        console.log("this selected item", this.state.selectedItem)
                     })
                 }
             })
+    }
+
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            selectedItem: {}
         })
+        const parsed = parse(nextProps.location.search);
+        solutionData.forEach(item => {
+                if(item['Business Name'] === parsed['Business Name']){
+                    this.setState({
+                        selectedItem: item
+                    }, () => {
+                        console.log("this selected item", this.state.selectedItem)
+                    })
+                }
+            })
+    }
+
+    componentDidUpdate(){
+        // this.setState({
+        //     selectedItem: {},
+        //     found: false
+        // });
+        
+        // const parsed = parse(this.props.location.search);
+        // solutionData.forEach(item => {
+        //         if(item['Business Name'] === parsed['Business Name']){
+        //             this.setState({
+        //                 selectedItem: item,
+        //                 found: true
+        //             }, () => {
+        //                 console.log("this selected item", this.state.selectedItem)
+        //             })
+        //         }
+        //     })
     }
 
     render(){

@@ -1,0 +1,9 @@
+.warning-tooltip {
+    background-color: orange;
+    color: white;
+}
+
+.error-tooltip {
+    background-color: red;
+    color: white;
+}

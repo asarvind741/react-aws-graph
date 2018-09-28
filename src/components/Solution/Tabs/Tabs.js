@@ -9,9 +9,10 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
 import HelpIcon from '@material-ui/icons/Help';
 import ShoppingBasket from '@material-ui/icons/ShoppingBasket';
-import ThumbDown from '@material-ui/icons/ThumbDown';
 import ThumbUp from '@material-ui/icons/ThumbUp';
 import Typography from '@material-ui/core/Typography';
+import './Tabs.css';
+import CustomizedBadge from '../ValidationMessage/ValidationMessage';
 
 function TabContainer(props) {
   return (
@@ -36,21 +37,43 @@ const styles = theme => ({
 class ScrollableTabsButtonPrevent extends React.Component {
   state = {
     value: 0,
+    validationWarning: true,
+    validationError: true
   };
 
   handleChange = (event, value) => {
     this.setState({ value });
   };
+  
+  
 
   render() {
     const { classes } = this.props;
     const { value } = this.state;
 
+
     return (
+  
       <div className={classes.root}>
         <AppBar position="static">
           <Tabs value={value} onChange={this.handleChange} scrollable scrollButtons="off">
-            <Tab label="Customer Details" icon={<PhoneIcon />} />
+            <Tab label="Customer Details" icon={
+            <div>
+              <PhoneIcon />
+              {(this.state.validationWarning) ? 
+                 <CustomizedBadge noOfMessages = "10"
+                 warning = "true"
+                 className = "info-icon" 
+                 onMouseOver = { this.showValidationInfo}
+                 /> : ''}
+                {(this.state.validationError) ? 
+                 <CustomizedBadge noOfMessages = "10"
+                 className = "info-icon" 
+                 error = "true"
+                 onMouseOver = { this.showValidationInfo}
+                 /> : ''}
+             </div>
+            } />
             <Tab label="Location Details" icon={<FavoriteIcon />} />
             <Tab label="User Details" icon={<PersonPinIcon />} />
             <Tab label="Call Flows" icon={<HelpIcon />} />
@@ -65,6 +88,7 @@ class ScrollableTabsButtonPrevent extends React.Component {
         {value === 4 && <TabContainer>Device Management will go here</TabContainer>}
         {value === 5 && <TabContainer>Active Solutions will here here</TabContainer>}
       </div>
+  
     );
   }
 }
