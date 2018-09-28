@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import './Solution.css';
 import { parse } from  'query-string';
-import { withRouter } from 'react-router-dom';
 import SolutionTitleBar from '../../components/Solution/SolutionTitleBar/SolutionTitleBar';
 import ScrollableTabsButtonPrevent from '../../components/Solution/Tabs/Tabs';
 import solutionData from '../../data/solution-details';
@@ -10,11 +9,14 @@ class Solution extends React.Component {
 
     state = {
         selectedItem: {},
-        found: false
+        found: false,
+     
     }
 
     componentDidMount(){
+        // Parse query string
         const parsed = parse(this.props.location.search);
+        
         solutionData.forEach(item => {
                 if(item['Business Name'] === parsed['Business Name']){
                     this.setState({
@@ -40,25 +42,6 @@ class Solution extends React.Component {
                     })
                 }
             })
-    }
-
-    componentDidUpdate(){
-        // this.setState({
-        //     selectedItem: {},
-        //     found: false
-        // });
-        
-        // const parsed = parse(this.props.location.search);
-        // solutionData.forEach(item => {
-        //         if(item['Business Name'] === parsed['Business Name']){
-        //             this.setState({
-        //                 selectedItem: item,
-        //                 found: true
-        //             }, () => {
-        //                 console.log("this selected item", this.state.selectedItem)
-        //             })
-        //         }
-        //     })
     }
 
     render(){

@@ -53,28 +53,35 @@ class ScrollableTabsButtonPrevent extends React.Component {
 
 
     return (
-  
+      <div className="tabSection">
       <div className={classes.root}>
         <AppBar position="static">
-          <Tabs value={value} onChange={this.handleChange} scrollable scrollButtons="off">
+           <Tabs value={value} onChange={this.handleChange} scrollable scrollButtons="off">
             <Tab label="Customer Details" icon={
             <div>
               <PhoneIcon />
               {(this.state.validationWarning) ? 
-                 <CustomizedBadge noOfMessages = "10"
-                 warning = "true"
+                 <CustomizedBadge 
+                 className = "show-message"
+                 warningCount = { 10 }
+                 errorCount = { 10 }
                  className = "info-icon" 
-                 onMouseOver = { this.showValidationInfo}
-                 /> : ''}
-                {(this.state.validationError) ? 
-                 <CustomizedBadge noOfMessages = "10"
-                 className = "info-icon" 
-                 error = "true"
                  onMouseOver = { this.showValidationInfo}
                  /> : ''}
              </div>
             } />
-            <Tab label="Location Details" icon={<FavoriteIcon />} />
+           <Tab label="Location Details" icon={
+            <div>
+              <FavoriteIcon />
+              {(this.state.validationWarning) ? 
+                 <CustomizedBadge 
+                 warningCount = { 5 }
+                 errorCount = { 0 }
+                 className = "info-icon" 
+                 onMouseOver = { this.showValidationInfo}
+                 /> : ''}
+             </div>
+            } />
             <Tab label="User Details" icon={<PersonPinIcon />} />
             <Tab label="Call Flows" icon={<HelpIcon />} />
             <Tab label="Device Management" icon={<ShoppingBasket />} />
@@ -87,6 +94,7 @@ class ScrollableTabsButtonPrevent extends React.Component {
         {value === 3 && <TabContainer>Call Flows will go here</TabContainer>}
         {value === 4 && <TabContainer>Device Management will go here</TabContainer>}
         {value === 5 && <TabContainer>Active Solutions will here here</TabContainer>}
+      </div>
       </div>
   
     );

@@ -18,21 +18,25 @@ class Layout extends React.Component {
             user:userList[0]
         })
 
-        var width = $(window).width();
-        $('.static-class').css('width', width);
+       // var width = $(window).width();
+       // $('.static-class').css('width', width);
     }
 
-    openMeunHandler = () => {
-
+    openMeunHandler = (event) => {
+        console.log("asfdfffffffffffff", event.target);
         this.setState((prevState) => {
             return { openMenu: !prevState.openMenu}
+        }, () => {
+            if(this.state.openMenu){
+                console.log("sddd", this.state.openMenu)
+                $('.container.static-class').css('width', '72%');
+            }
+           
+            else {
+                $('.container.static-class').css('width', '100%');
+            }
         });
-
-        var width1 = $('.SideDrawer').width();
-        console.log("width", width1);
-        var width = $(window).width();
-        var reducedWidth = $('.static-class').width(width -394);
-        $('static-class').css('width', reducedWidth);
+        
     }
     
     valueChangedHandler = value => {

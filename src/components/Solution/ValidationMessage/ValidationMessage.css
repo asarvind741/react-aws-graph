@@ -7,3 +7,16 @@
     background-color: red;
     color: white;
 }
+
+.error-class {
+    background-color: red !important;
+}
+
+.warning-class {
+    background-color: orange !important;
+}
+.info-class {
+    
+    color: white;
+}
+
