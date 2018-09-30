@@ -4,6 +4,7 @@ import Header from '../../components/Navigation/Header/Header';
 import OpenMenuDrawer from '../../components/Navigation/OpenMenuDrawer/OpenMenuDrawer';
 import './Layout.css';
 import $ from 'jquery';
+import { Auth } from 'aws-amplify';
 
 class Layout extends React.Component {
 
@@ -16,19 +17,28 @@ class Layout extends React.Component {
     componentDidMount(){
         this.setState({
             user:userList[0]
-        })
+        });
+        
+        this.getCurrentUserInfo();
+       
+        
+    }
 
-       // var width = $(window).width();
-       // $('.static-class').css('width', width);
+    async getCurrentUserInfo(){
+        try {
+            const currentUser = await Auth.currentAuthenticatedUser();
+            console.log("currnet", currentUser)
+        }
+        catch (e) {
+            console.log('get user attributes failed', e);
+          }
     }
 
     openMeunHandler = (event) => {
-        console.log("asfdfffffffffffff", event.target);
         this.setState((prevState) => {
             return { openMenu: !prevState.openMenu}
         }, () => {
             if(this.state.openMenu){
-                console.log("sddd", this.state.openMenu)
                 $('.container.static-class').css('width', '72%');
             }
            
@@ -46,7 +56,6 @@ class Layout extends React.Component {
     }
 
     render(){
-        console.log("children", this.props.children)
         let attachedClasses = `container static-class`;
 
         return (
