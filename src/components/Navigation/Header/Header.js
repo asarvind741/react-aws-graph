@@ -9,7 +9,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import UserAvatar from '../UI/UserAvatar/UserAvatar';
-import SeachComponent from '../../SearchComponent/SearchComponent'
+import SeachComponent from '../../SearchComponent/SearchComponent';
+
+import { Auth } from 'aws-amplify';
 
 class Header extends React.Component {
   state = {
@@ -34,7 +36,10 @@ class Header extends React.Component {
 
   signoutHandler =() =>{
     // this.props.history.push('/');
-    this.handleProfileMenuClose();
+    // this.handleProfileMenuClose();
+    Auth.signOut().then(() => {
+      window.location.reload();
+    })
   }
 
 
