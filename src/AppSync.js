@@ -5,3 +5,5 @@ export default
         "authenticationType": "AMAZON_COGNITO_USER_POOLS",
         "ApiKey": "da2-nemhrnkldbhbrbnkg2ig7imqvu"
     }
+
+    

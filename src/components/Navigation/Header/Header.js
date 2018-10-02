@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import './Header.css';
 import logo from '../../../asstes/Lexxcen_logo-0.png';
@@ -10,6 +11,11 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import UserAvatar from '../UI/UserAvatar/UserAvatar';
 import SeachComponent from '../../SearchComponent/SearchComponent';
+import { NavLink } from 'react-router-dom';
+import { graphql, compose } from 'react-apollo';
+import {GET_SOLUTION_LIST } from '../../../graphql/Queries';
+import { NEW_SOLUTION_SUBSCRIPTION } from '../../../graphql/Subscriptions';
+
 
 import { Auth } from 'aws-amplify';
 
@@ -19,11 +25,28 @@ class Header extends React.Component {
     webData: [],
     lexcenData: [],
     search: '',
-    show: false
+    show: false,
+    currentUser: null,
+    isAuthenticated: false
   };
 
+  componentWillMount(){
+    const AllSolutionData = compose(
+      graphql(GET_SOLUTION_LIST, {
+        options: {
+          fetchPolicy: 'cache-and-network'
+        },
+        props: (props) => {console.log("ppppppppppp", props)}
+  })
+  )(SeachComponent)
+}
+
+
   handleProfileMenuOpen = event => {
+    if(this.state.anchorEl === null)
     this.setState({ anchorEl: event.currentTarget });
+    else
+    this.setState({ anchorEl: null})
   };
 
   handleProfileMenuClose = event => {
@@ -34,33 +57,47 @@ class Header extends React.Component {
     this.setState({ anchorEl: null });
   };
 
-  signoutHandler =() =>{
-    // this.props.history.push('/');
-    // this.handleProfileMenuClose();
-    Auth.signOut().then(() => {
-      window.location.reload();
-    })
+  async componentDidMount (){
+  }
+
+  async componentWillReceiveProps (nextProps){
+    let currentUser;
+    try {
+      currentUser = await Auth.currentUserInfo().
+      this.setState({currentUser: currentUser})
+      
+    }
+    catch(e){
+
+    }
+    
   }
 
 
- 
-  
 
-
-   
 
   render() {
-    const { anchorEl } = this.state;
     const { currentUser } = this.props;
-    const userName = currentUser.firstName + ' ' + currentUser.lastName;
-    const role = currentUser.role;
-
-    const email = currentUser.email;
+    const { isAuthenticated, userHasAuthenticated} = this.props.childProps;
+    const { anchorEl } = this.state;
     const isMenuOpen = Boolean(anchorEl);
-    const initalCharacter = userName.substring(0, 1);
-    const title = "Account: " + userName + "\nEmail: " + email;
-    const renderMenu = (
-      <Menu style = {{ 'width': '100%', 'top': '50px'}}
+    let userName;
+    let role;
+    let email;
+    let initalCharacter;
+    let title;
+    if(currentUser){
+    userName = currentUser['custom:firstName'] + ' ' + currentUser['custom:lastName'];
+    role = currentUser['custom:role'];
+    email = currentUser.email;
+    initalCharacter = userName.substring(0, 1);
+    title = "Account: " + userName + "\nEmail: " + email;
+    }
+    
+    let renderMenu;
+    if(currentUser){
+    renderMenu = (
+      <Menu style = {{ 'width': '100%', 'top': '50px', 'height': '300px'}}
         anchorEl={anchorEl}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
@@ -78,12 +115,12 @@ class Header extends React.Component {
           </Typography>
         </div>
         <MenuItem onClick={this.handleClose} className = "signout-menu">
-        <button onClick = {this.signoutHandler}>Sign Out</button>
+        <button onClick = {this.props.signout}>Sign Out</button>
         </MenuItem>
         
       </Menu>
     );
-    
+  }
 
     return (
       <div>
@@ -106,20 +143,28 @@ class Header extends React.Component {
             </div>
             <div className="account-section header-col"
             title = { title }
-            >           
+            >
+            {(isAuthenticated && currentUser) ?
              <UserAvatar 
              mouseOverData = { this.mouseOverHandler }
              clicked = { this.handleProfileMenuOpen }
              initalCharacter = { initalCharacter } />
+             :<div>
+               <NavLink to = "/signup" >Signup</NavLink>
+               <NavLink to = "/signin">Signin</NavLink>
+             </div>
+            }
             </div>           
           </Toolbar>
         </AppBar>
+        {(currentUser) ?
         <div className = "render-menu">
         {renderMenu}
         </div>
+        : null }
       </div>
     );
   }
 }
 
-export default Header;
+export default withRouter(Header);

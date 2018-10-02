@@ -22,7 +22,6 @@ class Solution extends React.Component {
                     this.setState({
                         selectedItem: item
                     }, () => {
-                        console.log("this selected item", this.state.selectedItem)
                     })
                 }
             })
@@ -38,7 +37,6 @@ class Solution extends React.Component {
                     this.setState({
                         selectedItem: item
                     }, () => {
-                        console.log("this selected item", this.state.selectedItem)
                     })
                 }
             })

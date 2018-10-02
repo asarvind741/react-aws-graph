@@ -14,26 +14,29 @@ class Layout extends React.Component {
         user: {}
     }
 
-    componentDidMount(){
-        this.setState({
-            user:userList[0]
-        });
-        
-        this.getCurrentUserInfo();
-       
-        
-    }
+    async componentDidMount () {
 
-    async getCurrentUserInfo(){
         try {
-            const currentUser = await Auth.currentAuthenticatedUser();
-            console.log("currnet", currentUser)
-        }
-        catch (e) {
-            console.log('get user attributes failed', e);
+          if(await Auth.currentSession()){
+            this.userHasAuthenticated(true)
           }
-    }
+          
+        }
+        catch(e){
+          if(e !== 'No current user'){
+            alert(e.message)
+          }
+        }
+        this.setState({isAuthenticating: false})
+      }
+    
+      userHasAuthenticated = authenticated => {
+        this.setState({isAuthenticated: authenticated})
+      }
+    
 
+   
+  
     openMeunHandler = (event) => {
         this.setState((prevState) => {
             return { openMenu: !prevState.openMenu}
@@ -70,7 +73,7 @@ class Layout extends React.Component {
                     closed={this.openMeunHandler} 
                     />: null}
                 <div className = { attachedClasses }>
-                { this.props.children }                
+                {React.cloneElement(this.props.children)}              
                 </div>
             </Fragment>
         )

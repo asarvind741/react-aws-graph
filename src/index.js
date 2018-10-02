@@ -32,12 +32,12 @@ const client = new Client ({
 //     </BrowserRouter>
 // )
 
-const AppWithAuth = withAuthenticator(App);
+// const AppWithAuth = withAuthenticator(App);
 
 const AppWithApollo = () => (
     <ApolloProvider client={client}> 
         <Rehydrated>
-            <AppWithAuth />
+            <App />
         </Rehydrated>
     </ApolloProvider>
 )
