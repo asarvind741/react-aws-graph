@@ -2,6 +2,7 @@ import React from 'react';
 import LoginComponent from '../../components/Login/Login';
 import { Auth } from 'aws-amplify';
 import Spinner from '../../components/Navigation/UI/Spinner/Spinner';
+import './Login.css';
 
 class Login extends React.Component {
 
@@ -44,9 +45,11 @@ class Login extends React.Component {
             )
         }
         return(
+            <div className = "login-main">
             <LoginComponent
             changed = { this.handleChange }
             submit = { this.handleSubmit } />
+            </div>
         )
     }
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Switch, Route} from 'react-router-dom';
-import Layout from './hoc/Layout/Layout';
 import Homemain from './containers/Homemain/Homemain';
 import Solution from './containers/Solution/Solution';
 import Signup from './containers/Signup/Signup';

@@ -11,10 +11,9 @@ import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
   card: {
-    maxWidth: 400,
-    height: 600,
-    margin: 20,
-    marginLeft: 500
+    margin: 15,
+    maxWidth: '100%',
+    marginLeft: 0
   },
   media: {
     height: 140,
@@ -22,6 +21,7 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing.unit,
     marginRight: theme.spacing.unit,
+    margin:5,
     width: 200,
   },
 });

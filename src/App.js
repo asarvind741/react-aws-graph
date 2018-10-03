@@ -7,6 +7,7 @@ import $ from 'jquery';
 import { Auth } from 'aws-amplify';
 import Routes from './Routes';
 import { withRouter } from 'react-router-dom';
+import SeachComponent from './components/SearchComponent/SearchComponent';
 
 class App extends React.Component {
 
@@ -29,6 +30,8 @@ class App extends React.Component {
         }
         catch(e){
         }
+
+        
       }
 
       async componentWillReceiveProps(nextProps){
@@ -112,5 +115,10 @@ class App extends React.Component {
         )
     }
 }
+
+
+
+
+
 
 export default withRouter(App);

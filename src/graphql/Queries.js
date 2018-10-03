@@ -5,14 +5,14 @@ query listSolutions {
     listSolutions {
       items {
         uid
-        solutionID
-        solutionDesc
+        solutionId
+        solutionDescription
         businessName
         sites
-        users
+        user
         devices
-        created
-        lastModified
+        createdAt
+        updatedAt
         status
         author
         billingId

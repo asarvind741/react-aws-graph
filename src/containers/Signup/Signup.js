@@ -3,6 +3,7 @@ import { Auth } from 'aws-amplify';
 import SignupComponent from '../../components/Signup/Signup';
 import Button from '@material-ui/core/Button';
 import Spinner from '../../components/Navigation/UI/Spinner/Spinner';
+import './Signup.css';
 
 class Signup extends React.Component {
 
@@ -113,7 +114,7 @@ class Signup extends React.Component {
       )
     }
     return (
-      <div>
+      <div className = "signup-main">
         {this.state.newUser === null ? this.renderForm() : this.renderConfirmationForm()}
       </div>
     )

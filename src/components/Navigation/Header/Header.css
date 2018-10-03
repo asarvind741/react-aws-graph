@@ -28,7 +28,7 @@
 }
 .header-search.header-col {
     text-align: center;
-    width:100%;
+    width: 59%;
 }
 .search-wrapper {
     display: inline-block;
@@ -168,4 +168,30 @@ h4.heading-searhweb {
     height: 30px;
     border-radius: 3px;
     cursor: pointer;
+}
+
+.signup-signin {
+    margin: 10px;
+    
+}
+
+.signup-signin a {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+    padding: 5px;
+    border-radius: 3px;
+    display: inline-block;
+    width: 85px;
+    text-align: center;
+}
+
+.signup-signin a:hover
+ {
+    background-color: #48a1e7;
+}
+
+.signup-signin a:active
+.signup-signin a.active {
+    background-color: #48a1e7;
 }

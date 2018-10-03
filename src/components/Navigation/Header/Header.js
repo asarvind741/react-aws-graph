@@ -17,6 +17,7 @@ import {GET_SOLUTION_LIST } from '../../../graphql/Queries';
 import { NEW_SOLUTION_SUBSCRIPTION } from '../../../graphql/Subscriptions';
 
 
+
 import { Auth } from 'aws-amplify';
 
 class Header extends React.Component {
@@ -30,16 +31,7 @@ class Header extends React.Component {
     isAuthenticated: false
   };
 
-  componentWillMount(){
-    const AllSolutionData = compose(
-      graphql(GET_SOLUTION_LIST, {
-        options: {
-          fetchPolicy: 'cache-and-network'
-        },
-        props: (props) => {console.log("ppppppppppp", props)}
-  })
-  )(SeachComponent)
-}
+
 
 
   handleProfileMenuOpen = event => {
@@ -138,7 +130,7 @@ class Header extends React.Component {
             </div>
             <div className="header-search header-col">
                 <div className="search-wrapper">
-                    <SeachComponent />
+                    <AllSolutionData />
               </div>
             </div>
             <div className="account-section header-col"
@@ -149,9 +141,9 @@ class Header extends React.Component {
              mouseOverData = { this.mouseOverHandler }
              clicked = { this.handleProfileMenuOpen }
              initalCharacter = { initalCharacter } />
-             :<div>
-               <NavLink to = "/signup" >Signup</NavLink>
-               <NavLink to = "/signin">Signin</NavLink>
+             :<div className = "signup-signin">
+               <NavLink to = "/signup" activeClassName="active">Sign up</NavLink>
+               <NavLink to = "/signin"  activeClassName="active">Sign in</NavLink>
              </div>
             }
             </div>           
@@ -166,5 +158,16 @@ class Header extends React.Component {
     );
   }
 }
+
+const AllSolutionData = compose(
+  graphql(GET_SOLUTION_LIST, {
+    options: {
+      fetchPolicy: 'cache-and-network'
+    },
+    props: (props) => ({
+     solutionData: props.data.listSolutions && props.data.listSolutions.items
+    })
+})
+)(SeachComponent)
 
 export default withRouter(Header);

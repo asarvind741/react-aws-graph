@@ -18,7 +18,7 @@ class Solution extends React.Component {
         const parsed = parse(this.props.location.search);
         
         solutionData.forEach(item => {
-                if(item['Business Name'] === parsed['Business Name']){
+                if(item['businessName'] === parsed['businessName']){
                     this.setState({
                         selectedItem: item
                     }, () => {
@@ -33,7 +33,7 @@ class Solution extends React.Component {
         })
         const parsed = parse(nextProps.location.search);
         solutionData.forEach(item => {
-                if(item['Business Name'] === parsed['Business Name']){
+                if(item['businessName'] === parsed['businessName']){
                     this.setState({
                         selectedItem: item
                     }, () => {

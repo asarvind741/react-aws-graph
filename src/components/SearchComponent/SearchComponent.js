@@ -23,32 +23,38 @@ function escapeRegexCharacters(str) {
   }
   
   class SeachComponent extends React.Component {
-    allItems = webDummyData;
+    allItems = [];
     state = { 
-        webDummyData: [],
+        webData: [],
         selectedItem : ''
 
     };
 
     componentWillMount(){
+        // this.setState({
+        //     webDummyData: this.allItems,
+        // });
+        const lexcenObject = { title: 'Lexcen', data: this.props.solutionData };
+        let data = webDummyData;
+        data.push(lexcenObject);
         this.setState({
-            webDummyData: this.allItems,
+          webData: data
         });
-
+        this.allItems = data;
         
     }
   
     handleStateChange = (changes, downshiftState) => {
       if (changes.hasOwnProperty('inputValue')) {
         this.setState(
-            { webDummyData: this.getItems(changes.inputValue) });
+            { webData: this.getItems(changes.inputValue) });
       }
     };
   
     handleChange = (selectedItem, downshiftState) => {
 
       this.setState({ 
-        webDummyData: this.allItems
+        webData: this.allItems
        });
 
     
@@ -63,16 +69,16 @@ function escapeRegexCharacters(str) {
        
   
       if (escapedValue === '') {
-        return webDummyData
+        return this.state.webData
       }
   
       const regex = new RegExp('^' + escapedValue, 'i');
      
-        return webDummyData
+        return this.state.webData
         .map(section => {
           return {
             title: section.title,
-            data: section.data.filter(item => regex.test(item['Business Name'])
+            data: section.data.filter(item => regex.test(item['businessName'])
             
             )
         }
@@ -81,17 +87,19 @@ function escapeRegexCharacters(str) {
     };
 
     itemToString = (i) => {
-      return i ? i['Business Name'] : '';
+      return i ? i['businessName'] : '';
     }
 
     submitSearchHandler = (event) => {
       if(event.keyCode === 13){
         this.props.history.push({
           pathname: 'search',
-          search: '?Business Name='+ event.target.value
+          search: '?businessName='+ event.target.value
         })
       }
     }
+
+   
   
     render() {
       console.log("props", this.props)
@@ -144,7 +152,7 @@ function escapeRegexCharacters(str) {
             {!isOpen
               ? null
               : <Menu className="dropDown">
-                  {this.state.webDummyData.reduce((result, section, sectionIndex) => {
+                  {this.state.webData.reduce((result, section, sectionIndex) => {
                     result.sections.push(
                       <Section key={sectionIndex}> 
                         <SectionTitle className="titleName">
@@ -162,10 +170,10 @@ function escapeRegexCharacters(str) {
                                 isSelected: selectedItem === item
                               })}
                             >
-                              {(section.title === 'Web') ? item['Business Name'] : 
+                              {(section.title === 'Web') ? item['businessName'] : 
                             <div>
-                              <strong>{item['Business Name']} - {item['SolutionID']}</strong>
-                              <p>{ item['SolDescription'] }</p>
+                              <strong>{item['businessName']} - {item['solutionId']}</strong>
+                              <p>{ item['solutionDescription'] }</p>
                             </div> }
                             </Item>
                           )
