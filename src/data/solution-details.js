@@ -135,3 +135,8 @@ export default [
       "": ""
     }
   ]
+
+  // https://material-ui.com/page-layout-examples/sign-in/
+  // React Tutorial
+  // https://www.apollographql.com/docs/react/api/react-apollo.html
+// https://tylermcginnis.com/building-serverless-react-graphql-apps-with-aws-appsync/
