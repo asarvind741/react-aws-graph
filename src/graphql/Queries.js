@@ -20,3 +20,22 @@ query listSolutions {
   }
   }
 `
+
+export const GET_SOLUTION_BY_ID = gql `
+query getSolution($uid: String) {
+  getSolution(uid: $uid){
+    uid
+    solutionId
+    solutionDescription
+    businessName
+    sites
+    user
+    devices
+    createdAt
+    updatedAt
+    status
+    author
+    billingId
+  }
+}
+`

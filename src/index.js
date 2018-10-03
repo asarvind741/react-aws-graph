@@ -18,7 +18,9 @@ import AppSync from './AppSync';
 import awsExports from './app-config/aws-exports';
 
 Amplify.configure(awsExports);
-// Apollo Provide to work with aws
+
+/* >>>>>>>Apollo Provide to work with aws<<<<<<< */
+
 // const client = new Client ({
 //     url: AppSync.graphqlEndpoint,
 //     region: AppSync.region,
@@ -28,14 +30,25 @@ Amplify.configure(awsExports);
 //     }
 // })
 
-// AWSAppSync Client to work with aws
+/* >>>>>>>AWSAppSync Client to work with aws and API_KEY authentication<<<<<< */
+
+// const client = new AWSAppSyncClient ({
+//     url: AppSync.graphqlEndpoint,
+//     region: AppSync.region,
+//     auth: {
+//         type: AUTH_TYPE.API_KEY,
+//         apiKey: AppSync.ApiKey,
+//     }
+// })
+
+/* >>>>>AWSAppSync client to work with aws and COGNITO USER POOL<<<<< */
+
 const client = new AWSAppSyncClient ({
     url: AppSync.graphqlEndpoint,
     region: AppSync.region,
     auth: {
-        type: AUTH_TYPE.API_KEY,
-        apiKey: AppSync.ApiKey,
-        // jwtToken: async() => (await Auth.currentSession()).getIdToken().getJwtToken()
+        type: AUTH_TYPE.AMAZON_COGNITO_USER_POOLS,
+        jwtToken: async() => (await Auth.currentSession()).getIdToken().getJwtToken()
     }
 })
 
@@ -46,6 +59,7 @@ const client = new AWSAppSyncClient ({
 //     </BrowserRouter>
 // )
 
+/* withAuthenticator default authentication provided by AWS-AMPLIFY */
 // const AppWithAuth = withAuthenticator(App);
 
 const AppWithApollo = () => (
