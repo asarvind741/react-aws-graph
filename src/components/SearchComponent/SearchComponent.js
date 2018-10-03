@@ -15,6 +15,7 @@ import {
   import  { Div } from 'glamorous';
   import { css } from 'glamor';
   import Downshift from 'downshift';
+  
 
 
 function escapeRegexCharacters(str) {
@@ -32,7 +33,9 @@ function escapeRegexCharacters(str) {
     componentWillMount(){
         this.setState({
             webDummyData: this.allItems,
-        })
+        });
+
+        
     }
   
     handleStateChange = (changes, downshiftState) => {
@@ -82,8 +85,6 @@ function escapeRegexCharacters(str) {
     }
 
     submitSearchHandler = (event) => {
-      console.log("propssssssssss", this.props.history)
-      console.log('event is ------->', event.target.value);
       if(event.keyCode === 13){
         this.props.history.push({
           pathname: 'search',
@@ -93,6 +94,7 @@ function escapeRegexCharacters(str) {
     }
   
     render() {
+      console.log("props", this.props)
       return (
         <Div 
           css={{

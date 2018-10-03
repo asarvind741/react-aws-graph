@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -26,7 +27,7 @@ const styles = theme => ({
   },
 });
 
-const SignupComponent = (props) => {
+const LoginComponent = (props) => {
   const { classes } = props;
   return (
     <form onSubmit = {props.submit}>
@@ -34,64 +35,22 @@ const SignupComponent = (props) => {
       <CardActionArea>
         <CardContent>
           <Typography gutterBottom variant="headline" component="h2">
-            Signup
+            Login
           </Typography>
           <TextField
-          id="firstName"
-          label="First Name"
-          className={classes.textField}
-          value={props.firstName}
-          onChange={props.changed}
-          margin="normal"
-        />
-         <TextField
-          id="lastName"
-          label="Last Name"
-          className={classes.textField}
-          value={props.lastName}
-          onChange={props.changed}
-          margin="normal"
-        />
-         <TextField
-          id="userName"
-          label="Username"
-          className={classes.textField}
-          value={props.username}
-          onChange={props.changed}
-          margin="normal"
-        />
-         <TextField
           id="email"
           label="E-mail"
-          type = "email"
           className={classes.textField}
           value={props.email}
-          onChange={props.changed}
-          margin="normal"
-        />
-         <TextField
-          id="role"
-          label="Role"
-          className={classes.textField}
-          value={props.role}
           onChange={props.changed}
           margin="normal"
         />
         <TextField
           id="password"
           label="Password"
-          type = "password"
+          type="password"
           className={classes.textField}
           value={props.password}
-          onChange={props.changed}
-          margin="normal"
-        />
-        <TextField
-          id="confirmPassword"
-          label="confirmPassword"
-          type = "password"
-          className={classes.textField}
-          value={props.confirmPassword}
           onChange={props.changed}
           margin="normal"
         />
@@ -101,17 +60,14 @@ const SignupComponent = (props) => {
         <Button size="small" color="primary" type = "submit">
           Submit
         </Button>
-        <Button size="small" color="danger" type = "button">
-          Cancel
-        </Button>
       </CardActions>
     </Card>
     </form>
   );
 }
 
-SignupComponent.propTypes = {
+LoginComponent.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SignupComponent);
+export default withStyles(styles)(LoginComponent);

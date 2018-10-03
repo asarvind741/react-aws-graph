@@ -1,9 +1,9 @@
-import gql from 'graphql-tag'
+import gql from 'graphql-tag';
 
-export const GET_SOLUTION_LIST = gql`
-query listSolutions {
-    listSolutions {
-      items {
+export const NEW_SOLUTION_SUBSCRIPTION = gql `
+
+subscription createSolution {
+    onCreateSolution {
         uid
         solutionID
         solutionDesc
@@ -16,7 +16,6 @@ query listSolutions {
         status
         author
         billingId
-      }
-  }
-  }
+    }
+}
 `
