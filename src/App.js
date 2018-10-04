@@ -1,5 +1,4 @@
 import React, { Fragment} from 'react';
-import userList from './data/user.json';
 import Header from './components/Navigation/Header/Header';
 import OpenMenuDrawer from './components/Navigation/OpenMenuDrawer/OpenMenuDrawer';
 import './hoc/Layout/Layout.css';
@@ -7,7 +6,6 @@ import $ from 'jquery';
 import { Auth } from 'aws-amplify';
 import Routes from './Routes';
 import { withRouter } from 'react-router-dom';
-import SeachComponent from './components/SearchComponent/SearchComponent';
 
 class App extends React.Component {
 
@@ -35,7 +33,7 @@ class App extends React.Component {
       }
 
       async componentWillReceiveProps(nextProps){
-          console.log("sd");
+
           let user;
         try {
         user = await Auth.currentUserInfo();
@@ -69,12 +67,6 @@ class App extends React.Component {
       this.setState({isAuthenticated: authenticated})
     }
 
-    handleLogout = async event => {
-      await Auth.signOut();
-      this.userHasAuthenticated(false);
-      this.props.history.push("/");
-    
-    }
     signoutHandler = async event =>{
         await Auth.signOut();
         this.setState({user:null});
@@ -97,7 +89,9 @@ class App extends React.Component {
 
         return (
             <Fragment>
-                 <Header 
+                {(this.state.isAuthenticated) ? 
+                <Fragment>
+                <Header 
                  childProps = { childProps }
                  openMenuClicked = {this.openMeunHandler } 
                  valueChanged = {(value) => this.valueChangedHandler(value) }
@@ -108,6 +102,7 @@ class App extends React.Component {
                     open={this.state.openMenu}
                     closed={this.openMeunHandler} 
                     />: null}
+                 </Fragment> : null}
                 <div className = { attachedClasses }>
                 <Routes childProps = {childProps } />           
                 </div>

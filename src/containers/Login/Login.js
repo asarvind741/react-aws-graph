@@ -2,6 +2,8 @@ import React from 'react';
 import LoginComponent from '../../components/Login/Login';
 import { Auth } from 'aws-amplify';
 import Spinner from '../../components/Navigation/UI/Spinner/Spinner';
+
+
 import './Login.css';
 
 class Login extends React.Component {
@@ -30,13 +32,28 @@ class Login extends React.Component {
         try {
             await Auth.signIn(this.state.email, this.state.password);
             this.props.props.userHasAuthenticated(true);
-            this.props.history.push('/');
+            this.props.history.push('/home');
         }
         catch(e){
             alert(e.message);
         }
         this.setState({isLoading:false})
     }
+    
+    async componentDidMount(){
+        
+        if( await localStorage.getItem('token')){
+            this.props.history.push('/home');
+        }
+         
+    }
+
+    async componentWillReceiveProps(nextProps){
+        
+        if( await localStorage.getItem('token'))
+        this.props.history.push('/home');
+    }
+    
 
     render(){
         if(this.state.isLoading){

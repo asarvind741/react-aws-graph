@@ -25,24 +25,40 @@ function escapeRegexCharacters(str) {
   class SeachComponent extends React.Component {
     allItems = [];
     state = { 
-        webData: [],
+        webData: webDummyData,
         selectedItem : ''
 
     };
 
-    componentWillMount(){
+    async componentWillMount(){
         // this.setState({
         //     webDummyData: this.allItems,
         // });
-        const lexcenObject = { title: 'Lexcen', data: this.props.solutionData };
-        let data = webDummyData;
-        data.push(lexcenObject);
-        this.setState({
-          webData: data
-        });
-        this.allItems = data;
+      const lexcenObject = { title: 'Lexcen', data: this.props.solutionData };
+      console.log("lexcenObject11111", lexcenObject)
+      let data = webDummyData;
+      data.push(lexcenObject);
+     await this.setState({
+        webData: data
+      }, () => { this.forceUpdate()});
+      this.allItems = data;
+       
         
     }
+
+    async componentWillReceiveProps(nextProps){
+      const lexcenObject = { title: 'Lexcen', data: this.props.solutionData };
+      console.log("lexcenObject222", lexcenObject)
+      let data = webDummyData;
+      data.push(lexcenObject);
+     await this.setState({
+        webData: data
+      }, () => { this.forceUpdate()});
+      this.allItems = data;
+     
+    }
+
+   
   
     handleStateChange = (changes, downshiftState) => {
       if (changes.hasOwnProperty('inputValue')) {
@@ -99,10 +115,18 @@ function escapeRegexCharacters(str) {
       }
     }
 
+    
+    
+
    
   
     render() {
-      console.log("props", this.props)
+
+    const showLexcenData = () => {
+      
+    }
+
+     
       return (
         <Div 
           css={{
@@ -158,7 +182,7 @@ function escapeRegexCharacters(str) {
                         <SectionTitle className="titleName">
                           {section.title}
                         </SectionTitle>
-                        {section.data.map((item, itemIndex) => {
+                        {(section && section['data'])? section.data.map((item, itemIndex) => {
                           const index = result.itemIndex++;
                           return (
                             <Item 
@@ -177,7 +201,7 @@ function escapeRegexCharacters(str) {
                             </div> }
                             </Item>
                           )
-                        })}
+                        }): <div>Loading</div>}
                       </Section>
                     )
                     return result;

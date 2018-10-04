@@ -19,7 +19,7 @@ import awsExports from './app-config/aws-exports';
 
 Amplify.configure(awsExports);
 
-/* >>>>>>>Apollo Provide to work with aws<<<<<<< */
+/* ----->>>>>>> Apollo Provide to work with aws <<<<<<<------------- */
 
 // const client = new Client ({
 //     url: AppSync.graphqlEndpoint,
@@ -30,7 +30,7 @@ Amplify.configure(awsExports);
 //     }
 // })
 
-/* >>>>>>>AWSAppSync Client to work with aws and API_KEY authentication<<<<<< */
+/* ------>>>>>>> AWSAppSync Client to work with aws and API_KEY authentication <<<<<<------- */
 
 // const client = new AWSAppSyncClient ({
 //     url: AppSync.graphqlEndpoint,
@@ -41,7 +41,7 @@ Amplify.configure(awsExports);
 //     }
 // })
 
-/* >>>>>AWSAppSync client to work with aws and COGNITO USER POOL<<<<< */
+/* ---->>>>> AWSAppSync client to work with aws and COGNITO USER POOL <<<<<----------- */
 
 const client = new AWSAppSyncClient ({
     url: AppSync.graphqlEndpoint,
@@ -59,7 +59,7 @@ const client = new AWSAppSyncClient ({
 //     </BrowserRouter>
 // )
 
-/* withAuthenticator default authentication provided by AWS-AMPLIFY */
+/* ----->>>withAuthenticator default authentication provided by AWS-AMPLIFY<<<<<-------- */
 // const AppWithAuth = withAuthenticator(App);
 
 const AppWithApollo = () => (

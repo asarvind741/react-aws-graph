@@ -26,10 +26,9 @@ class Header extends React.Component {
     webData: [],
     lexcenData: [],
     search: '',
-    show: false,
-    currentUser: null,
-    isAuthenticated: false
+    show: false
   };
+  
 
 
 
@@ -49,20 +48,14 @@ class Header extends React.Component {
     this.setState({ anchorEl: null });
   };
 
-  async componentDidMount (){
+  signoutHeader = () => {
+    this.setState({
+      anchorEl:null
+    });
+    this.props.signout()
   }
 
-  async componentWillReceiveProps (nextProps){
-    let currentUser;
-    try {
-      currentUser = await Auth.currentUserInfo().
-      this.setState({currentUser: currentUser})
-      
-    }
-    catch(e){
-
-    }
-    
+  async componentDidMount (){
   }
 
 
@@ -70,7 +63,7 @@ class Header extends React.Component {
 
   render() {
     const { currentUser } = this.props;
-    const { isAuthenticated, userHasAuthenticated} = this.props.childProps;
+    const { isAuthenticated} = this.props.childProps;
     const { anchorEl } = this.state;
     const isMenuOpen = Boolean(anchorEl);
     let userName;
@@ -107,7 +100,7 @@ class Header extends React.Component {
           </Typography>
         </div>
         <MenuItem onClick={this.handleClose} className = "signout-menu">
-        <button onClick = {this.props.signout}>Sign Out</button>
+        <button onClick = {this.signoutHeader}>Sign Out</button>
         </MenuItem>
         
       </Menu>
@@ -141,15 +134,17 @@ class Header extends React.Component {
              mouseOverData = { this.mouseOverHandler }
              clicked = { this.handleProfileMenuOpen }
              initalCharacter = { initalCharacter } />
-             :<div className = "signup-signin">
-               <NavLink to = "/signup" activeClassName="active">Sign up</NavLink>
-               <NavLink to = "/signin"  activeClassName="active">Sign in</NavLink>
-             </div>
+             :
+            //  <div className = "signup-signin">
+            //    <NavLink to = "/signup" activeClassName="active">Sign up</NavLink>
+            //    <NavLink to = "/signin"  activeClassName="active">Sign in</NavLink>
+            //  </div>
+            null
             }
             </div>           
           </Toolbar>
         </AppBar>
-        {(currentUser) ?
+        {(isMenuOpen) ?
         <div className = "render-menu">
         {renderMenu}
         </div>
