@@ -53,16 +53,15 @@ class Login extends React.Component {
         this.setState({isLoading:false})
     }
     
-    // componentWillMount(){
-        
-    //     if(Auth.currentUserInfo()){
-    //         this.props.history.push('/home');
-    //     }
+   componentWillMount(){
+          
+        if(Auth.currentUserInfo()){
+            this.props.history.push('/home');
+        }
          
-    // }
+    }
 
     async componentWillReceiveProps(nextProps){
-        
         if( await localStorage.getItem('token'))
         this.props.history.push('/home');
     }
@@ -74,6 +73,7 @@ class Login extends React.Component {
                 <Spinner />
             )
         }
+        else {
         return(
             <div className = "login-main">
             <LoginComponent
@@ -82,6 +82,7 @@ class Login extends React.Component {
             </div>
         )
     }
+}
 }
 
 
