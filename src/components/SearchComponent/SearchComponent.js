@@ -26,38 +26,35 @@ function escapeRegexCharacters(str) {
     allItems = [];
     state = { 
         webData: webDummyData,
-        selectedItem : ''
+        selectedItem : '',
+        solutionData: []
 
     };
 
-    async componentWillMount(){
-        // this.setState({
-        //     webDummyData: this.allItems,
-        // });
+    async componentWillMount(){     
+      this.setState({
+        solutionData:this.props.solutionData
+      });
       const lexcenObject = { title: 'Lexcen', data: this.props.solutionData };
-      console.log("lexcenObject11111", lexcenObject)
       let data = webDummyData;
       data.push(lexcenObject);
      await this.setState({
         webData: data
       }, () => { this.forceUpdate()});
       this.allItems = data;
-       
-        
     }
 
     async componentWillReceiveProps(nextProps){
-      const lexcenObject = { title: 'Lexcen', data: this.props.solutionData };
-      console.log("lexcenObject222", lexcenObject)
-      let data = webDummyData;
-      data.push(lexcenObject);
-     await this.setState({
-        webData: data
-      }, () => { this.forceUpdate()});
-      this.allItems = data;
+     if(this.props.solutionData != nextProps.solutionData){
+       this.setState({solutionData: nextProps.solutionData})
+     this.forceUpdate();
+     }
      
     }
 
+    shouldComponentUpdate(nextProps, nextState){
+      return true;
+    }
    
   
     handleStateChange = (changes, downshiftState) => {
@@ -85,12 +82,12 @@ function escapeRegexCharacters(str) {
        
   
       if (escapedValue === '') {
-        return this.state.webData
+        return this.allItems
       }
   
       const regex = new RegExp('^' + escapedValue, 'i');
      
-        return this.state.webData
+        return this.allItems
         .map(section => {
           return {
             title: section.title,
@@ -121,11 +118,10 @@ function escapeRegexCharacters(str) {
    
   
     render() {
-
-    const showLexcenData = () => {
-      
-    }
-
+      let webDummyData1 = webDummyData;
+      let tempObject = {title: 'Lexcen', data: this.state.solutionData};
+      webDummyData1.splice(1, 1);
+      webDummyData1.push(tempObject);
      
       return (
         <Div 
@@ -176,13 +172,14 @@ function escapeRegexCharacters(str) {
             {!isOpen
               ? null
               : <Menu className="dropDown">
-                  {this.state.webData.reduce((result, section, sectionIndex) => {
+                  {webDummyData.reduce((result, section, sectionIndex) => {
                     result.sections.push(
                       <Section key={sectionIndex}> 
                         <SectionTitle className="titleName">
                           {section.title}
                         </SectionTitle>
-                        {(section && section['data'])? section.data.map((item, itemIndex) => {
+                        {(section && section.data) ?
+                        section.data.map((item, itemIndex) => {
                           const index = result.itemIndex++;
                           return (
                             <Item 
@@ -201,7 +198,8 @@ function escapeRegexCharacters(str) {
                             </div> }
                             </Item>
                           )
-                        }): <div>Loading</div>}
+                        })
+                      : null}
                       </Section>
                     )
                     return result;
