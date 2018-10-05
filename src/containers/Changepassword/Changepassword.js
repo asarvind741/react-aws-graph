@@ -11,7 +11,9 @@ class Changepassowrd extends React.Component {
         isLoading: false,
         oldPassword:'',
         newPassword: '',
-        confirmNewPassword: ''
+        confirmNewPassword: '',
+        errors: null,
+        currentUser:this.props.currentUser[0]
     }
 
     handleChange = (event) => {
@@ -19,36 +21,57 @@ class Changepassowrd extends React.Component {
             [event.target.id]: event.target.value
         })
     }
+    componentWillMount(){
+        if(!this.state.currentUser){
+            this.props.history.push("/")
+        }
+    }
 
-    handleSubmit = async(event) => {
+    handleSubmit = (event) => {
         event.preventDefault();
-        console.log("sssssssss", event.target)
         this.setState({
             isLoading: true
         });
-
-        console.log("this state1", this.state.newPassword);
-        console.log("this state2", this.state.confirmNewPassword)
         const currentUser = this.props.currentUser[0];
-        console.log("this state223", currentUser)
-        
-
+        if(currentUser){
         if(this.state.newPassword === this.state.confirmNewPassword){
             
-            console.log("current user", currentUser)
             Auth.completeNewPassword(currentUser, this.state.newPassword, currentUser.challengeParam.requiredAttributes)
             .then(user => {
                 if(user){
                     this.props.history.push('/home')
                 }
             })
+            .catch(e =>{
+                // alert(e.message)
+                console.log("e", e)
+               let error = (e.message).split(":").pop()
+                this.setState({errors: error})
+                // this.props.history.push('/');
+            })
         }
+        else {
+            this.setState({
+                errors: "Password don't match"
+            })
+            // this.props.history.push("/");
+        }
+
+        this.setState({isLoading: false})
     }
+    else {
+        this.props.history.push("/");
+    }
+}
 
 
 
 
     render (){
+        if(this.state.isLoading){
+            return <Spinner />
+        }
+        else {
         return (
             <Changepasswordcomponent
             oldPassword = { this.state.oldPassword }
@@ -56,13 +79,14 @@ class Changepassowrd extends React.Component {
             confirmNewPassword = { this.state.confirmNewPassword }
             changed = { this.handleChange }
             submit = { this.handleSubmit } 
+            errors = { this.state.errors }
             />
         )
+        }
     }
 }
 
 function mapStateToProps(state){
-    console.log("state", state.currentUser)
     return {
         currentUser: state.currentUser
     }

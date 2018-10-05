@@ -140,3 +140,6 @@ export default [
   // React Tutorial
   // https://www.apollographql.com/docs/react/api/react-apollo.html
 // https://tylermcginnis.com/building-serverless-react-graphql-apps-with-aws-appsync/
+
+
+// No such key specified 403 error in aws- include index.html as error file in aws s3 bucket

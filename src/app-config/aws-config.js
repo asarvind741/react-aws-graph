@@ -6,24 +6,24 @@
 
 // AWS Mobile Hub Project Constants
 var aws_app_analytics = 'enable';
-var aws_cognito_identity_pool_id = 'us-east-1:0a020f82-5f0d-420d-98ca-4f93562fcc7f';
-var aws_cognito_region = 'us-east-1';
+var aws_cognito_identity_pool_id = 'ap-southeast-2:f0926032-43fe-4d89-b50a-48d2f93e8cfa';
+var aws_cognito_region = 'ap-southeast-2';
 var aws_content_delivery = 'enable';
-var aws_content_delivery_bucket = 'arvindlaxan-hosting-mobilehub-1292351267';
-var aws_content_delivery_bucket_region = 'us-east-1';
+var aws_content_delivery_bucket = 'lexcen-hosting-mobilehub-1007065480';
+var aws_content_delivery_bucket_region = 'ap-southeast-2';
 var aws_content_delivery_cloudfront = 'enable';
-var aws_content_delivery_cloudfront_domain = 'd1wa87msz8wlk0.cloudfront.net';
-var aws_mobile_analytics_app_id = '9887ee84e76f45898db2fac049039699';
+var aws_content_delivery_cloudfront_domain = 'd32vi6xvom11fg.cloudfront.net';
+var aws_mobile_analytics_app_id = '710153a8f17f4fbc8feffd284ffb55c6';
 var aws_mobile_analytics_app_region = 'us-east-1';
-var aws_project_id = 'e04e8e7f-7d33-45d3-bfda-22e418a641ef';
-var aws_project_name = 'Arvind Laxan';
-var aws_project_region = 'us-east-1';
-var aws_resource_name_prefix = 'arvindlaxan-mobilehub-1292351267';
+var aws_project_id = 'f1ddb64f-4ebc-4be5-b5a8-94bc71624bc8';
+var aws_project_name = 'lexcen';
+var aws_project_region = 'ap-southeast-2';
+var aws_resource_name_prefix = 'lexcen-mobilehub-1007065480';
 var aws_sign_in_enabled = 'enable';
 var aws_user_pools = 'enable';
-var aws_user_pools_id = 'us-east-1_46u1Omqph';
+var aws_user_pools_id = 'ap-southeast-2_udRB0J4V7';
 var aws_user_pools_mfa_type = 'OFF';
-var aws_user_pools_web_client_id = 'r38i6atmu78ca4m73lc5p91ap';
+var aws_user_pools_web_client_id = '1ic41alac8oo2c0mo0hjmk77p7';
 
 AWS.config.region = aws_project_region;
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({

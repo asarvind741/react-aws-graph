@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import './Header.css';
 import logo from '../../../asstes/Lexxcen_logo-0.png';
+import tipImage from '../../../asstes/drop_airow.png';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -82,14 +83,17 @@ class Header extends React.Component {
     let renderMenu;
     if(currentUser){
     renderMenu = (
-      <Menu style = {{ 'width': '100%', 'top': '50px', 'height': '300px'}}
+      <Menu style = {{ 'width': '100%', 'top': '50px', 'height': '300px', 'overflow': 'visible'}}
         anchorEl={anchorEl}
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMenuOpen}
+        className="drop_box"
         onClose={this.handleMenuClose}
+        
         >
-        <div className="user-details">
+        <img className="drop"  src = {tipImage } />
+        <div className="user-details arvind">
           <UserAvatar 
               clicked = { this.handleProfileMenuOpen }
               initalCharacter = { initalCharacter } />
@@ -109,6 +113,7 @@ class Header extends React.Component {
 
     return (
       <div>
+       
         <AppBar position="static" className = "Root">
           <Toolbar className="header-tool-bar">
             <div className="mobile-trigger header-col" onClick = { this.props.openMenuClicked} >

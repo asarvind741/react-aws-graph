@@ -195,3 +195,8 @@ h4.heading-searhweb {
 .signup-signin a.active {
     background-color: #48a1e7;
 }
+
+.header-tool-bar div img {
+    margin: 0 0 0 -120%;
+    cursor: pointer;
+}

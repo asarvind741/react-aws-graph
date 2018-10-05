@@ -53,13 +53,13 @@ class Login extends React.Component {
         this.setState({isLoading:false})
     }
     
-    async componentDidMount(){
+    // componentWillMount(){
         
-        if(await Auth.currentSession()){
-            this.props.history.push('/home');
-        }
+    //     if(Auth.currentUserInfo()){
+    //         this.props.history.push('/home');
+    //     }
          
-    }
+    // }
 
     async componentWillReceiveProps(nextProps){
         

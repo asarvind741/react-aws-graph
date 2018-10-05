@@ -129,7 +129,7 @@ function escapeRegexCharacters(str) {
             display: 'flex',
             justifyContent: 'center',
             flexDirection: 'column',
-            textAlign: 'center'
+            textAlign: 'center',
           }}
         >
            <Downshift 
@@ -149,7 +149,8 @@ function escapeRegexCharacters(str) {
          inputValue,
          highlightedIndex
         }) =>
-          <div className={css({ width: 400, margin: 0 })}>
+       
+          <div className= "center_search">
             <Div position="relative">
               <Input
                 {...getInputProps({
@@ -206,6 +207,7 @@ function escapeRegexCharacters(str) {
                   }, { sections: [], itemIndex: 0}).sections}
                 </Menu>}
           </div>}
+    
       </Downshift>
         </Div>
       );
