@@ -53,13 +53,13 @@ class Login extends React.Component {
         this.setState({isLoading:false})
     }
     
-   componentWillMount(){
+//    componentWillMount(){
           
-        if(Auth.currentUserInfo()){
-            this.props.history.push('/home');
-        }
+//         if(Auth.currentUserInfo()){
+//             this.props.history.push('/home');
+//         }
          
-    }
+//     }
 
     async componentWillReceiveProps(nextProps){
         if( await localStorage.getItem('token'))

@@ -143,3 +143,5 @@ export default [
 
 
 // No such key specified 403 error in aws- include index.html as error file in aws s3 bucket
+
+// https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html

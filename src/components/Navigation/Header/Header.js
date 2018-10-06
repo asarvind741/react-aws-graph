@@ -88,7 +88,6 @@ class Header extends React.Component {
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMenuOpen}
-        className="drop_box"
         onClose={this.handleMenuClose}
         
         >
@@ -165,7 +164,20 @@ const AllSolutionData = compose(
       fetchPolicy: 'cache-and-network'
     },
     props: (props) => ({
-     solutionData: props.data.listSolutions && props.data.listSolutions.items
+     solutionData: props.data.listSolutions && props.data.listSolutions.items,
+     subscribeToNewSolution:params => {
+       props.data.subscribeToMore({
+         document:NEW_SOLUTION_SUBSCRIPTION,
+         updateQuery: ( prev, { subscriptionData: {data: { onCreateSolution }}}) => ({
+           ...prev,
+           solutionData: {
+            __typename: 'solutionConnection',
+            items:[onCreateSolution, ...prev.listSolutions.items.filter(solution =>
+              solution.uid  !== onCreateSolution.uid)]
+           }
+         })
+       })
+     }
     })
 })
 )(SeachComponent)
