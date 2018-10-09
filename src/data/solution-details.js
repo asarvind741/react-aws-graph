@@ -144,4 +144,7 @@ export default [
 
 // No such key specified 403 error in aws- include index.html as error file in aws s3 bucket
 
+// AWS serve limits
 // https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html
+
+// https://blog.senacor.com/a-keen-introduction-to-dynamodb/

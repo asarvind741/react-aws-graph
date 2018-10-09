@@ -39,3 +39,22 @@ query getSolution($uid: String) {
   }
 }
 `
+
+export const GET_SOLUTION_BY_STATUS = gql `
+query getSolutionByStatus($status: String) {
+  getSolution(status: $status){
+    uid
+    solutionId
+    solutionDescription
+    businessName
+    sites
+    user
+    devices
+    createdAt
+    updatedAt
+    status
+    author
+    billingId
+  }
+}
+`

@@ -63,8 +63,8 @@ class Header extends React.Component {
 
 
   render() {
-    const { currentUser } = this.props;
-    const { isAuthenticated} = this.props.childProps;
+    const { currentUser, isAuthenticated } = this.props;
+  
     const { anchorEl } = this.state;
     const isMenuOpen = Boolean(anchorEl);
     let userName;
@@ -88,10 +88,8 @@ class Header extends React.Component {
         anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         transformOrigin={{ vertical: 'top', horizontal: 'right' }}
         open={isMenuOpen}
-        onClose={this.handleMenuClose}
-        
-        >
-        <img className="drop"  src = {tipImage } />
+        onClose={this.handleMenuClose}>
+        {/* <img className="drop"  src = {tipImage } /> */}
         <div className="user-details arvind">
           <UserAvatar 
               clicked = { this.handleProfileMenuOpen }
@@ -133,7 +131,7 @@ class Header extends React.Component {
             <div className="account-section header-col"
             title = { title }
             >
-            {(isAuthenticated && currentUser) ?
+            {(currentUser) ?
              <UserAvatar 
              mouseOverData = { this.mouseOverHandler }
              clicked = { this.handleProfileMenuOpen }

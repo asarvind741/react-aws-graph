@@ -1,11 +1,13 @@
 import React, { Fragment} from 'react';
 import Header from './components/Navigation/Header/Header';
 import OpenMenuDrawer from './components/Navigation/OpenMenuDrawer/OpenMenuDrawer';
+import SideNavigation from './containers/SideNavigation/SideNavigation'
 import './hoc/Layout/Layout.css';
 import $ from 'jquery';
 import { Auth } from 'aws-amplify';
 import Routes from './Routes';
 import { withRouter } from 'react-router-dom';
+import Spinner  from './components/Navigation/UI/Spinner/Spinner';
 
 class App extends React.Component {
 
@@ -14,36 +16,55 @@ class App extends React.Component {
         textSearch: '',
         user: null,
         isAuthenticated: false,
-        isAuthenticating: true
+        isAuthenticating: true,
+        isLoading: false
     }
 
-    async componentDidMount (){
+    async componentWillMount (){
+        this.setState({isLoading: true})
         let user;
         try {
         user = await Auth.currentUserInfo();
-          this.setState({
-              user: user.attributes,
-              isAuthenticated: true
-            });
+        this.setState({
+            user: user.attributes,
+            isAuthenticated: true
+          });
+        
+        if(user){
+            this.props.history.push("/home");
         }
+        else {
+            this.props.history.push("/");
+        }
+    }
         catch(e){
         }
-
+        this.setState({isLoading:false})
         
       }
 
       async componentWillReceiveProps(nextProps){
+        // this.setState({isLoading: true})
+        // let user;
+        // try {
+        // user = await Auth.currentUserInfo();
+        // this.setState({
+        //     user: user.attributes,
+        //     isAuthenticated: true
+        //   });
+        //  if(user){
+        //     this.props.history.push("/home");
+        //  }
+        //  else {
+        //     this.props.history.push("/");
+        //  }
+        
+        // }
+        // catch(e){
+           
+        // }
 
-          let user;
-        try {
-        user = await Auth.currentUserInfo();
-          this.setState({
-              user: user.attributes,
-              isAuthenticated: true
-            });
-        }
-        catch(e){
-        }
+        // this.setState({isLoading:false})
       }
 
    
@@ -63,8 +84,20 @@ class App extends React.Component {
         
     }
 
-    userHasAuthenticated = authenticated => {
+    userHasAuthenticated = async authenticated => {
+       let user = await Auth.currentUserInfo();
       this.setState({isAuthenticated: authenticated})
+
+      if(authenticated == true){
+          this.setState({
+              user: user.attributes
+          })
+      }
+      else {
+        this.setState({
+            user: null
+        })
+      }
     }
 
     signoutHandler = async event =>{
@@ -87,6 +120,10 @@ class App extends React.Component {
           userHasAuthenticated: this.userHasAuthenticated
         };
 
+        if(this.state.isLoading){
+            return( <Spinner />)
+        }
+        else {
         return (
             <Fragment>
                 {(this.state.isAuthenticated) ? 
@@ -96,7 +133,9 @@ class App extends React.Component {
                  openMenuClicked = {this.openMeunHandler } 
                  valueChanged = {(value) => this.valueChangedHandler(value) }
                  currentUser = { this.state.user }
-                 signout = { this.signoutHandler }/>
+                 signout = { this.signoutHandler }
+                 />
+               
                 {(this.state.openMenu)?
                  <OpenMenuDrawer
                     open={this.state.openMenu}
@@ -104,11 +143,13 @@ class App extends React.Component {
                     />: null}
                  </Fragment> : null}
                 <div className = { attachedClasses }>
+                <SideNavigation />
                 <Routes childProps = {childProps } />           
                 </div>
             </Fragment>
         )
     }
+}
 }
 
 

@@ -1,0 +1,5 @@
+.sidenav-main {
+    display: inline-grid;
+    float: left;
+    border-right: 2px solid #674e4e;
+}

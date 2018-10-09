@@ -44,7 +44,6 @@ class Changepassowrd extends React.Component {
             })
             .catch(e =>{
                 // alert(e.message)
-                console.log("e", e)
                let error = (e.message).split(":").pop()
                 this.setState({errors: error})
                 // this.props.history.push('/');

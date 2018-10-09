@@ -1,7 +1,8 @@
 import React from 'react';
 import { Switch, Route} from 'react-router-dom';
-import Homemain from './containers/Homemain/Homemain';
+import Dashboard from './containers/Dashboard/Dashboard';
 import Solution from './containers/Solution/Solution';
+import DisplaySolution from './containers/DisplaySolution/DisplaySolution'
 import Signup from './containers/Signup/Signup';
 import Login from './containers/Login/Login';
 import Changepassword from './containers/Changepassword/Changepassword';
@@ -18,8 +19,9 @@ export default ({childProps}) => {
          
           {/* <Route path = "/signup" render={(props) => <Signup {...props} props={childProps} />} /> */}
          
-          <Route path = "/home" component = {Homemain } exact/>
-          <Route path = "/" render={(props) => <Login {...props} props={childProps} />} />
+          <Route path = "/home" component = {Dashboard } exact/>
+          <Route path = "/solution" exact component = { DisplaySolution } />
+          <Route path = "/" exact render={(props) => <Login {...props} props={childProps} />} />
           
        </Switch>
     )

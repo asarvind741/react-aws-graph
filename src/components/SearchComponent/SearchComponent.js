@@ -120,7 +120,7 @@ function escapeRegexCharacters(str) {
     render() {
       let webDummyData1 = webDummyData;
       let tempObject = {title: 'Lexcen', data: this.state.solutionData};
-      webDummyData1.splice(1, 1);
+      let data = webDummyData1.splice(1, webDummyData1.length-1);
       webDummyData1.push(tempObject);
      
       return (

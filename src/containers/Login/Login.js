@@ -35,7 +35,6 @@ class Login extends React.Component {
         try {
            Auth.signIn(this.state.email, this.state.password)
             .then(user => {
-                console.log("user", user);
                 this.props.saveCurrentUser(user);
                 if(user.challengeName === "NEW_PASSWORD_REQUIRED"){
                     this.props.history.push('/changePassword');
