@@ -41,8 +41,8 @@ query getSolution($uid: String) {
 `
 
 export const GET_SOLUTION_BY_STATUS = gql `
-query getSolutionByStatus($status: String) {
-  getSolution(status: $status){
+query getSolutionByStatus($businessName: String) {
+  getSolutionByStatus(businessName: $businessName){
     uid
     solutionId
     solutionDescription

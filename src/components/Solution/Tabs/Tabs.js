@@ -56,37 +56,101 @@ class ScrollableTabsButtonPrevent extends React.Component {
       <div className="tabSection">
       <div className={classes.root}>
         <AppBar position="static">
+        <div >
            <Tabs value={value} onChange={this.handleChange} scrollable scrollButtons="off">
-            <Tab label="Customer Details" icon={
-            <div>
+            <Tab label="Customer Details"
+            className = "tab-container"  icon={
+            <div className = "inside-tab-div-class">
+              <div className = "phone-icon">
               <PhoneIcon />
+              </div>
               {(this.state.validationWarning) ? 
                  <CustomizedBadge 
                  className = "show-message"
                  warningCount = { 10 }
                  errorCount = { 10 }
-                 className = "info-icon" 
                  onMouseOver = { this.showValidationInfo}
                  /> : ''}
              </div>
             } />
-           <Tab label="Location Details" icon={
-            <div>
+           <Tab className = "tab-container" label="Location Details" icon={
+            <div className = "inside-tab-div-class">
+            <div className = "phone-icon">
               <FavoriteIcon />
+              </div>
               {(this.state.validationWarning) ? 
                  <CustomizedBadge 
                  warningCount = { 5 }
                  errorCount = { 0 }
-                 className = "info-icon" 
                  onMouseOver = { this.showValidationInfo}
                  /> : ''}
              </div>
             } />
-            <Tab label="User Details" icon={<PersonPinIcon />} />
-            <Tab label="Call Flows" icon={<HelpIcon />} />
-            <Tab label="Device Management" icon={<ShoppingBasket />} />
-            <Tab label="Active Solutions" icon={<ThumbUp />} />
+            <Tab className = "tab-container"  label="User Details" 
+            icon={
+              <div className = "inside-tab-div-class">
+              <div className = "phone-icon">
+                <PersonPinIcon />
+                </div>
+                {(this.state.validationWarning) ? 
+                   <CustomizedBadge 
+                   warningCount = { 5 }
+                   errorCount = { 0 }
+                   onMouseOver = { this.showValidationInfo}
+                   /> : ''}
+               </div>
+              }
+             />
+            <Tab 
+            className = "tab-container"  
+            label="Call Flows" 
+            icon={
+              <div className = "inside-tab-div-class">
+              <div className = "phone-icon">
+                <HelpIcon />
+                </div>
+                {(this.state.validationWarning) ? 
+                   <CustomizedBadge 
+                   warningCount = { 5 }
+                   errorCount = { 0 }
+                   onMouseOver = { this.showValidationInfo}
+                   /> : ''}
+               </div>
+              } />
+            <Tab 
+            className = "tab-container"  
+            label="Device Management"
+            icon={
+              <div className = "inside-tab-div-class">
+              <div className = "phone-icon">
+                <ShoppingBasket />
+                </div>
+                {(this.state.validationWarning) ? 
+                   <CustomizedBadge 
+                   warningCount = { 5 }
+                   errorCount = { 0 }
+                   onMouseOver = { this.showValidationInfo}
+                   /> : ''}
+               </div>
+              } />
+            <Tab 
+            className = "tab-container"  
+            label="Active Solutions" 
+            icon={
+              <div className = "inside-tab-div-class">
+              <div className = "phone-icon">
+                <FavoriteIcon />
+                </div>
+                {(this.state.validationWarning) ? 
+                   <CustomizedBadge 
+                   warningCount = { 5 }
+                   errorCount = { 0 }
+                   onMouseOver = { this.showValidationInfo}
+                   /> : ''}
+               </div>
+              } />
           </Tabs>
+          </div>
         </AppBar>
         {value === 0 && <TabContainer>Customer Details will go here</TabContainer>}
         {value === 1 && <TabContainer>Location Details will go here</TabContainer>}

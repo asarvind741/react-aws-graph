@@ -1,14 +1,24 @@
 import React from 'react';
 import './SolutionTitleBar.css';
+import Spinner from '../../Navigation/UI/Spinner/Spinner';
 
-const solutionTitleBar = ({solution}) => (
+const solutionTitleBar = (props) => {
+    const {searchData } = props;
+    console.log("searssssssssss", searchData )
+   if(!searchData){
+       return <Spinner />
+   }
+   else {
+    return (
     <div className = "solution-title-bar">
-        <p><strong>Company Name: </strong>{solution['Business Name']}</p>
-        <p><strong>Solution ID: </strong> {solution['SolutionID']}</p>
-        <p><strong>Solution Description: </strong>{solution['SolDescription']}</p>
-        <p><strong>Solution Status: </strong>{solution['Status']}</p>
-        <p><strong>Mode: </strong></p>
+        <p><strong>Company Name: </strong>{searchData.businessName}</p>
+        <p><strong>Solution ID: </strong>{searchData.solutionId}</p>
+        <p><strong>Solution Description: </strong>{searchData.solutionDescription}</p>
+        <p><strong>Solution Status: </strong>{searchData.status}</p>
+        <p><strong>Mode: </strong>{searchData.mode}</p>
     </div>
-)
+    )
+   }
+}
 
 export default solutionTitleBar;

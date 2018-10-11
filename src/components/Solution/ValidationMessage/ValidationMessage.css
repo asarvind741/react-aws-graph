@@ -19,4 +19,8 @@
     
     color: white;
 }
-
+.inside-tab-div-class .info-icon-message {
+    display: table-cell;
+    width: auto;
+    
+}

@@ -9,3 +9,32 @@
     background-color: red !important;
 }
 
+.inside-tab-div-class .phone-icon {
+    display: table-cell;
+    width: auto;
+    vertical-align: middle;
+    padding: 0 0px!important;
+    margin: 0 !important;
+}
+
+
+
+.tab-container {
+    width: 16.65%; float: left;
+    margin: 0 !important;
+}
+
+.show-message {
+    display: table-cell;width: auto;
+}
+
+.inside-tab-div-class {
+    display: table;
+    width: 42%;
+    height: 13px;
+}
+.MuiTab-labelContainer-149{
+    padding-top: 0!important;
+    padding-bottom: 0!important;
+    font-size: 10px;
+}

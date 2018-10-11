@@ -4,11 +4,13 @@ import { parse } from  'query-string';
 import SolutionTitleBar from '../../components/Solution/SolutionTitleBar/SolutionTitleBar';
 import ScrollableTabsButtonPrevent from '../../components/Solution/Tabs/Tabs';
 import solutionData from '../../data/solution-details';
-
+import { GET_SOLUTION_BY_STATUS } from '../../graphql/Queries';
+import { graphql, compose } from 'react-apollo';
 class Solution extends React.Component {
 
     state = {
         selectedItem: {},
+        searchItem: '',
         found: false,
      
     }
@@ -16,15 +18,10 @@ class Solution extends React.Component {
     componentDidMount(){
         // Parse query string
         const parsed = parse(this.props.location.search);
-        
-        solutionData.forEach(item => {
-                if(item['businessName'] === parsed['businessName']){
-                    this.setState({
-                        selectedItem: item
-                    }, () => {
-                    })
-                }
-            })
+
+        this.setState({
+            searchItem: parsed['businessName']
+        })
     }
 
     componentWillReceiveProps(nextProps){
@@ -32,24 +29,32 @@ class Solution extends React.Component {
             selectedItem: {}
         })
         const parsed = parse(nextProps.location.search);
-        solutionData.forEach(item => {
-                if(item['businessName'] === parsed['businessName']){
-                    this.setState({
-                        selectedItem: item
-                    }, () => {
-                    })
-                }
-            })
+
+        this.setState({
+            searchItem: parsed['businessName']
+        });
+
+        
     }
 
     render(){
+
+        const SoultionTitleBarWithData = compose(
+            graphql(GET_SOLUTION_BY_STATUS, {
+                options: {
+                  fetchPolicy: 'cache-and-network',
+                  variables: { businessName: this.state.searchItem}
+                },
+                props: (props) => ({
+                 searchData: props.data && props.data.getSolutionByStatus })
+                })
+        )(SolutionTitleBar)
         
         return(
             <div>
            {(this.state.selectedItem) ? 
            <Fragment>
-               <SolutionTitleBar 
-               solution = {this.state.selectedItem}/>
+               <SoultionTitleBarWithData/>
                <ScrollableTabsButtonPrevent />
                </Fragment> : '' }
             </div>

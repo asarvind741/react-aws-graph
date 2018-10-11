@@ -1,6 +1,5 @@
 import React, { Fragment} from 'react';
 import Header from './components/Navigation/Header/Header';
-import OpenMenuDrawer from './components/Navigation/OpenMenuDrawer/OpenMenuDrawer';
 import SideNavigation from './containers/SideNavigation/SideNavigation'
 import './hoc/Layout/Layout.css';
 import $ from 'jquery';
@@ -41,30 +40,6 @@ class App extends React.Component {
         }
         this.setState({isLoading:false})
         
-      }
-
-      async componentWillReceiveProps(nextProps){
-        // this.setState({isLoading: true})
-        // let user;
-        // try {
-        // user = await Auth.currentUserInfo();
-        // this.setState({
-        //     user: user.attributes,
-        //     isAuthenticated: true
-        //   });
-        //  if(user){
-        //     this.props.history.push("/home");
-        //  }
-        //  else {
-        //     this.props.history.push("/");
-        //  }
-        
-        // }
-        // catch(e){
-           
-        // }
-
-        // this.setState({isLoading:false})
       }
 
    
@@ -114,7 +89,7 @@ class App extends React.Component {
     }
 
     render(){
-        let attachedClasses = `container static-class`;
+       // let attachedClasses = `container static-class`;
         const childProps = {
           isAuthenticated: this.state.isAuthenticated,
           userHasAuthenticated: this.userHasAuthenticated
@@ -129,22 +104,31 @@ class App extends React.Component {
                 {(this.state.isAuthenticated) ? 
                 <Fragment>
                 <Header 
+                 open={this.state.openMenu}
                  childProps = { childProps }
                  openMenuClicked = {this.openMeunHandler } 
                  valueChanged = {(value) => this.valueChangedHandler(value) }
                  currentUser = { this.state.user }
                  signout = { this.signoutHandler }
-                 />
-               
-                {(this.state.openMenu)?
-                 <OpenMenuDrawer
-                    open={this.state.openMenu}
-                    closed={this.openMeunHandler} 
-                    />: null}
-                 </Fragment> : null}
-                <div className = { attachedClasses }>
-                <SideNavigation />
-                <Routes childProps = {childProps } />           
+                 /> 
+                </Fragment> : null}
+                <div >
+                {(this.state.isAuthenticated && this.state.openMenu)?
+                <div className = "expand-side-menu">
+                <SideNavigation 
+                 open={this.state.openMenu}
+                closed={this.openMeunHandler} />
+                </div>: 
+                this.state.isAuthenticated ? 
+                    <div className = "collapse-side-menu">
+                    <SideNavigation 
+                     open={this.state.openMenu}
+                    closed={this.openMeunHandler} />
+                    </div>: null
+                 }
+                 <div className = {this.state.openMenu ? 'right-side' : 'right-side-collapse'}>
+                <Routes childProps = {childProps } />
+                </div>           
                 </div>
             </Fragment>
         )

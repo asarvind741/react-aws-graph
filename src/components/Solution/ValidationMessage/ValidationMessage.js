@@ -22,7 +22,6 @@ const styles = theme => ({
     top: 1,
     right: -15,
     backgroundColor: 'red',
-    // The border color match the background color.
     border: `2px solid ${
       theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[900]
     }`,
@@ -32,7 +31,6 @@ const styles = theme => ({
     top: 1,
     right: -15,
     backgroundColor: 'orange',
-    // The border color match the background color.
     border: `2px solid ${
       theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[900]
     }`,
@@ -48,12 +46,14 @@ function CustomizedBadge(props) {
     <Tooltip title = { title } 
     placement="top" 
     classes={(errorCount>0) ? { tooltip: classes.warningTooltip }: {  tooltip: classes.errorTooltip }}>
+    <div className = "info-icon-message">
     <IconButton aria-label="Info" >
       <Badge badgeContent={ totalCount } color="secondary" 
       classes={(errorCount) ? { badge: classes.badge2 }: { badge: classes.badge1 }}>
         <Error className = 'info-class'/>       
       </Badge>
     </IconButton>
+    </div>
     </Tooltip>
   );
 }

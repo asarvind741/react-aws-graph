@@ -148,3 +148,58 @@ export default [
 // https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html
 
 // https://blog.senacor.com/a-keen-introduction-to-dynamodb/
+
+// DynamoDB tutorial
+// https://www.dynamodbguide.com/filtering
+
+// Resolvers mapping
+// https://docs.aws.amazon.com/appsync/latest/devguide/resolver-mapping-template-reference-dynamodb.html#aws-appsync-resolver-mapping-template-reference-dynamodb-filter
+
+// Working with scan
+// https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html
+
+// AWS Primary and Secondary Key
+// https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html#HowItWorks.CoreComponents.PrimaryKey
+
+// Resolver template
+// https://docs.aws.amazon.com/appsync/latest/devguide/resolver-mapping-template-reference-dynamodb.html
+
+// get item using idex
+// https://stackoverflow.com/questions/52077167/appsync-query-on-global-secondary-index
+
+// Error while using global secondary index-
+// aws Unable to parse the JSON document: 'Unexpected character ('\"' (code 34)
+// This error due to missing comma in resolver template-
+
+//  Example of using global secondary index-
+/* 
+
+Resolver Template-
+{
+    "version" : "2017-02-28",
+    "operation" : "Query",
+    "index": "businessName-index",
+    "query" : {
+        ## Provide a query expression. **
+        "expression": "#businessName = :businessName",
+        "expressionNames" : {
+        "#businessName" : "businessName"
+        },
+        "expressionValues" : {
+            ":businessName" : {
+             "S" :  "${ctx.args.businessName}"
+            }
+        }
+    }
+}
+
+Response mapping template-
+#if($ctx.result.items.size() > 0)
+  $util.toJson($ctx.result.items[0])
+#else
+  null
+#end
+ */
+
+//  Building serverless React Graphql applications with AWS Appsync
+// https://tylermcginnis.com/building-serverless-react-graphql-apps-with-aws-appsync/

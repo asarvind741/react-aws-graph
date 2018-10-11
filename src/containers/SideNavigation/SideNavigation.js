@@ -7,7 +7,9 @@ class SideNavigation extends React.Component {
     render(){
         return(
             <div className = "sidenav-main">
-                <SidenavigationItems />
+                <SidenavigationItems
+                clicked = {this.props.closed}
+                isOpen = { this.props.open } />
             </div>
         )
     }

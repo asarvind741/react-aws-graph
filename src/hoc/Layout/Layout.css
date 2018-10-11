@@ -3,3 +3,22 @@
     width: 100%; 
     /* padding: 0 15px; */
 }
+
+.expand-side-menu {
+}
+
+.collapse-side-menu {
+    font-size: 0;
+}
+
+.right-side-collapse {
+    width: 96%;
+    display: block;
+    float: right;
+    position: relative;
+    margin:  0;
+}
+.right-side{margin:  70px 0 0 0;width: 87%;overflow: hidden;float: right;position: relative;
+    z-index: -9;}
+.collapse-side-menu {position: relative;top: 0;left: 0; overflow: hidden;width: 13%;max-width: 48px;float: left;}
+.expand-side-menu{    position: fixed;top: 0;left: 0;}

@@ -1,5 +1,17 @@
 .sidenav-main {
     display: inline-grid;
     float: left;
-    border-right: 2px solid #674e4e;
+    /* border-right: 2px solid #674e4e; */
 }
+
+.sidenav-item {list-style-type: none;}
+button.MuiButtonBase-root-47{margin-left: -25px;}
+.sidenav-main{position:relative}
+.sidenav-main::after {width: 100%;display: block;position: absolute;top: 0;right: 0;
+    /* border-right: 2px solid #674e4e; */
+    content: "";}
+
+ div.act_wdth{width: 87%;position: fixed;right: 0;top: 0;}
+
+
+
