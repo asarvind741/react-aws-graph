@@ -7,6 +7,7 @@ import { Auth } from 'aws-amplify';
 import Routes from './Routes';
 import { withRouter } from 'react-router-dom';
 import Spinner  from './components/Navigation/UI/Spinner/Spinner';
+import NotificationMessage from './components/Navigation/UI/NotificationMessage/NotificationMessage';
 
 class App extends React.Component {
 
@@ -35,11 +36,11 @@ class App extends React.Component {
         else {
             this.props.history.push("/");
         }
-    }
+      }
         catch(e){
         }
         this.setState({isLoading:false})
-        
+        this.setState({isLoading:false})
       }
 
    
@@ -63,7 +64,7 @@ class App extends React.Component {
        let user = await Auth.currentUserInfo();
       this.setState({isAuthenticated: authenticated})
 
-      if(authenticated == true){
+      if(authenticated === true){
           this.setState({
               user: user.attributes
           })
@@ -127,6 +128,7 @@ class App extends React.Component {
                     </div>: null
                  }
                  <div className = {this.state.openMenu ? 'right-side' : 'right-side-collapse'}>
+                {/* <NotificationMessage /> */}
                 <Routes childProps = {childProps } />
                 </div>           
                 </div>

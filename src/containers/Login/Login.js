@@ -5,6 +5,8 @@ import Spinner from '../../components/Navigation/UI/Spinner/Spinner';
 import { saveCurrentUser } from '../../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { ToastContainer } from "react-toastify";
+
 import './Login.css';
 
 class Login extends React.Component {
