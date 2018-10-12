@@ -15,7 +15,6 @@ const  dashboardItem = (props) =>{
     let classes1 = "card";
     if(item.status === "Active"){
         classes1 = classes1 + ' ' + 'card-acitve';
-        console.log("classes", classes1)
     }
     else  if(item.status === "Pending"){
         classes1 = classes1 + ' ' + 'card-pending';

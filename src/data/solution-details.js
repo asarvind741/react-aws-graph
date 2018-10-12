@@ -203,3 +203,13 @@ Response mapping template-
 
 //  Building serverless React Graphql applications with AWS Appsync
 // https://tylermcginnis.com/building-serverless-react-graphql-apps-with-aws-appsync/
+
+
+// React new features for 16.4
+// https://hackernoon.com/react-16-0-16-3-new-features-for-every-day-use-f397da374acf
+
+// Reset Password AWS tutorial
+// https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-using-import-tool-password-reset.html
+
+// AWS Auth amplify
+// https://aws-amplify.github.io/amplify-js/media/authentication_guide

@@ -22,7 +22,7 @@ query listSolutions {
 `
 
 export const GET_SOLUTION_BY_ID = gql `
-query getSolution($uid: String) {
+query getSolution($uid: ID) {
   getSolution(uid: $uid){
     uid
     solutionId

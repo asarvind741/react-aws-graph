@@ -6,19 +6,11 @@ import { Auth } from 'aws-amplify';
 const privateRoute = ({ component: Component, ...rest }) => {
     const jwtToken = async() => (await Auth.currentSession()).getIdToken().getJwtToken() ? true: false;
 
-    const returnToSignInPage =() =>{
-        try {
-             Auth.signOut();
-        }
-        catch(e){
-
-        }
-    }
     return <Route {...rest} render = {props => (
         jwtToken) ?  (
             <Component {...props} />) : 
             <Redirect to ={{
-                pathname: '/home',
+                pathname: '/',
                 state: { from: props.location }
             }} />
             

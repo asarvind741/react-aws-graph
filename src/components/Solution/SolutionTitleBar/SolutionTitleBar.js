@@ -4,7 +4,6 @@ import Spinner from '../../Navigation/UI/Spinner/Spinner';
 
 const solutionTitleBar = (props) => {
     const {searchData } = props;
-    console.log("searssssssssss", searchData )
    if(!searchData){
        return <Spinner />
    }

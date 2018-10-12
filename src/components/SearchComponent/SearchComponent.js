@@ -69,8 +69,8 @@ function escapeRegexCharacters(str) {
       this.setState({ 
         webData: this.allItems
        });
-
-    
+       
+       this.submitSearchHandler(selectedItem);
        
     };
   
@@ -103,13 +103,13 @@ function escapeRegexCharacters(str) {
       return i ? i['businessName'] : '';
     }
 
-    submitSearchHandler = (event) => {
-      if(event.keyCode === 13){
+    submitSearchHandler = (item) => {
+       if(item && item.businessName){
         this.props.history.push({
           pathname: 'search',
-          search: '?businessName='+ event.target.value
+          search: '?businessName='+ item.businessName
         })
-      }
+       }
     }
 
     

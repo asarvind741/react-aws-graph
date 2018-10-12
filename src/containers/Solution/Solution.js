@@ -3,7 +3,6 @@ import './Solution.css';
 import { parse } from  'query-string';
 import SolutionTitleBar from '../../components/Solution/SolutionTitleBar/SolutionTitleBar';
 import ScrollableTabsButtonPrevent from '../../components/Solution/Tabs/Tabs';
-import solutionData from '../../data/solution-details';
 import { GET_SOLUTION_BY_STATUS } from '../../graphql/Queries';
 import { graphql, compose } from 'react-apollo';
 class Solution extends React.Component {

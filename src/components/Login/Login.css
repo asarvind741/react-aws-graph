@@ -2,6 +2,11 @@
     margin-left: 10px;
 }
 
-.primary-button {
-    
+
+
+.change-password-url {
+    text-decoration: none;
+    margin-top: 23px !important;
+    cursor: pointer;
+    display: block;
 }

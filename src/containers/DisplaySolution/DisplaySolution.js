@@ -9,7 +9,6 @@ class DisplaySolution extends React.Component {
 
     componentDidMount(){
         const parsed = parse(this.props.location.search);
-        console.log("parsed", parsed.query);
     }
 
     render(){

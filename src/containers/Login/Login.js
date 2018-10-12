@@ -5,8 +5,6 @@ import Spinner from '../../components/Navigation/UI/Spinner/Spinner';
 import { saveCurrentUser } from '../../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
-
 import './Login.css';
 
 class Login extends React.Component {
@@ -29,19 +27,22 @@ class Login extends React.Component {
     
     handleSubmit = async event => {
         event.preventDefault();
-
         this.setState({ isLoading: true});
-
         try {
            Auth.signIn(this.state.email, this.state.password)
             .then(user => {
                 this.props.saveCurrentUser(user);
                 if(user.challengeName === "NEW_PASSWORD_REQUIRED"){
-                    this.props.history.push('/changePassword');
+                    this.props.history.push('/change-password');
                 }
                 else {
                     this.props.props.userHasAuthenticated(true);
                     this.props.history.push('/home');
+                }
+            })
+            .catch(e => {
+                if(e.code === "PasswordResetRequiredException"){
+                    this.props.history.push("/reset-password");
                 }
             })
            
@@ -51,14 +52,6 @@ class Login extends React.Component {
         }
         this.setState({isLoading:false})
     }
-    
-//    componentWillMount(){
-          
-//         if(Auth.currentUserInfo()){
-//             this.props.history.push('/home');
-//         }
-         
-//     }
 
     async componentWillReceiveProps(nextProps){
         if( await localStorage.getItem('token'))
@@ -83,13 +76,6 @@ class Login extends React.Component {
     }
 }
 }
-
-
-// function mapStateToProps(state){
-//     return {
-//         currentUser:state.currentUser
-//     }
-// }
 
 function mapDispatchToProps(dispatch){
     return bindActionCreators({saveCurrentUser }, dispatch);
