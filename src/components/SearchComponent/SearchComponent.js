@@ -87,8 +87,7 @@ function escapeRegexCharacters(str) {
   
       const regex = new RegExp('^' + escapedValue, 'i');
      
-        return this.allItems
-        .map(section => {
+        return this.allItems.map(section => {
           return {
             title: section.title,
             data: section.data.filter(item => regex.test(item['businessName'])
@@ -173,7 +172,7 @@ function escapeRegexCharacters(str) {
             {!isOpen
               ? null
               : <Menu className="dropDown">
-                  {webDummyData.reduce((result, section, sectionIndex) => {
+                  {this.state.webData.reduce((result, section, sectionIndex) => {
                     result.sections.push(
                       <Section key={sectionIndex}> 
                         <SectionTitle className="titleName">

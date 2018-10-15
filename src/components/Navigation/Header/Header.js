@@ -12,10 +12,11 @@ import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
 import UserAvatar from '../UI/UserAvatar/UserAvatar';
 import SeachComponent from '../../SearchComponent/SearchComponent';
-import { NavLink } from 'react-router-dom';
 import { graphql, compose } from 'react-apollo';
 import {GET_SOLUTION_LIST } from '../../../graphql/Queries';
 import { NEW_SOLUTION_SUBSCRIPTION } from '../../../graphql/Subscriptions';
+import { successMessage} from '../../../actions/index';
+import { connect } from 'react-redux';
 
 
 
@@ -50,6 +51,7 @@ class Header extends React.Component {
   };
 
   signoutHeader = () => {
+    this.props.successMessage("You have logged out successfully!")
     this.setState({
       anchorEl:null
     });
@@ -63,7 +65,7 @@ class Header extends React.Component {
 
 
   render() {
-    const { currentUser, isAuthenticated } = this.props;
+    const { currentUser } = this.props;
   
     const { anchorEl } = this.state;
     const isMenuOpen = Boolean(anchorEl);
@@ -182,4 +184,4 @@ const AllSolutionData = compose(
 })
 )(SeachComponent)
 
-export default withRouter(Header);
+export default withRouter(connect(null, {successMessage})(Header));

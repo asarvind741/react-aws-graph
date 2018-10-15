@@ -5,7 +5,7 @@ import Spinner from '../../components/Navigation/UI/Spinner/Spinner';
 import { saveCurrentUser } from '../../actions/index';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { ToastContainer } from "react-toastify";
+import { successMessage, errorMessage, warningMessage, infoMessage } from '../../actions/index';
 
 import './Login.css';
 
@@ -35,22 +35,30 @@ class Login extends React.Component {
             .then(user => {
                 this.props.saveCurrentUser(user);
                 if(user.challengeName === "NEW_PASSWORD_REQUIRED"){
+                    this.props.infoMessage("Please change your password");
                     this.props.history.push('/change-password');
                 }
                 else {
+                    this.props.successMessage("You are logged in!");
                     this.props.props.userHasAuthenticated(true);
                     this.props.history.push('/home');
                 }
             })
             .catch(e => {
                 if(e.code === "PasswordResetRequiredException"){
+                    this.props.infoMessage("Please reset your password");
                     this.props.history.push("/reset-password");
+                }
+                else {
+                   this.props.errorMessage(e.message);
+
                 }
             })
            
         }
         catch(e){
-            alert(e.message);
+            // alert(e.message);
+            this.props.errorMessage(e.message)
         }
         this.setState({isLoading:false})
     }
@@ -79,9 +87,9 @@ class Login extends React.Component {
 }
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({saveCurrentUser }, dispatch);
-}
+// function mapDispatchToProps(dispatch){
+//     return bindActionCreators({saveCurrentUser }, dispatch);
+// }
 
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(null, {saveCurrentUser, successMessage, infoMessage, warningMessage, errorMessage})(Login);

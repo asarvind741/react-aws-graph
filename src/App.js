@@ -9,6 +9,7 @@ import { withRouter } from 'react-router-dom';
 import Spinner  from './components/Navigation/UI/Spinner/Spinner';
 import NotificationMessage from './components/Navigation/UI/NotificationMessage/NotificationMessage';
 
+
 class App extends React.Component {
 
     state = {
@@ -39,7 +40,6 @@ class App extends React.Component {
       }
         catch(e){
         }
-        this.setState({isLoading:false})
         this.setState({isLoading:false})
       }
 
@@ -90,7 +90,6 @@ class App extends React.Component {
     }
 
     render(){
-       // let attachedClasses = `container static-class`;
         const childProps = {
           isAuthenticated: this.state.isAuthenticated,
           userHasAuthenticated: this.userHasAuthenticated
@@ -128,7 +127,7 @@ class App extends React.Component {
                     </div>: null
                  }
                  <div className = {this.state.openMenu ? 'right-side' : 'right-side-collapse'}>
-                {/* <NotificationMessage /> */}
+                 <NotificationMessage />
                 <Routes childProps = {childProps } />
                 </div>           
                 </div>
@@ -137,6 +136,7 @@ class App extends React.Component {
     }
 }
 }
+
 
 
 

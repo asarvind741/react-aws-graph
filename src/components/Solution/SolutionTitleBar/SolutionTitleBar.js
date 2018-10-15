@@ -5,7 +5,15 @@ import Spinner from '../../Navigation/UI/Spinner/Spinner';
 const solutionTitleBar = (props) => {
     const {searchData } = props;
    if(!searchData){
-       return <Spinner />
+       return (
+        <div className = "solution-title-bar">
+        <p><strong>Company Name: </strong></p>
+        <p><strong>Solution ID: </strong></p>
+        <p><strong>Solution Description: </strong></p>
+        <p><strong>Solution Status: </strong></p>
+        <p><strong>Mode: </strong></p>
+    </div>
+       )
    }
    else {
     return (

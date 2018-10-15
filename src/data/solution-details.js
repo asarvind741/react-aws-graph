@@ -213,3 +213,7 @@ Response mapping template-
 
 // AWS Auth amplify
 // https://aws-amplify.github.io/amplify-js/media/authentication_guide
+
+// React-toastify tutorial
+// https://www.npmjs.com/package/react-toastify
+// https://github.com/fkhadra/react-toastify/issues/94

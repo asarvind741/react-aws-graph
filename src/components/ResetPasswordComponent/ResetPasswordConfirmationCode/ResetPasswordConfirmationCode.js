@@ -66,8 +66,9 @@ const ResetPasswordConfirmationCode = (props) => {
               value = {props.confirmationCode}
               onChange = { props.changed} />
             </FormControl>
+            <p className = "resend-code" onClick = { props.resendCode}>Resend Code</p>
             <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="newPassword">newPassword</InputLabel>
+              <InputLabel htmlFor="newPassword">New Password</InputLabel>
               <Input 
               id="newPassword" 
               name="newPassword" 
