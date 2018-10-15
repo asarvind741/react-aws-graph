@@ -5,21 +5,25 @@ import SolutionTitleBar from '../../components/Solution/SolutionTitleBar/Solutio
 import ScrollableTabsButtonPrevent from '../../components/Solution/Tabs/Tabs';
 import { GET_SOLUTION_BY_STATUS } from '../../graphql/Queries';
 import { graphql, compose } from 'react-apollo';
+import onlyWebData from '../../data/search-web';
+
 class Solution extends React.Component {
 
     state = {
         selectedItem: {},
         searchItem: '',
         found: false,
+        webItem: null
      
     }
 
     componentDidMount(){
         // Parse query string
         const parsed = parse(this.props.location.search);
-
+        const itemFound= onlyWebData[0].data.filter(item => item.businessName ===  parsed['businessName'])
         this.setState({
-            searchItem: parsed['businessName']
+            searchItem: parsed['businessName'],
+            webItem : itemFound[0]
         })
     }
 
@@ -28,9 +32,10 @@ class Solution extends React.Component {
             selectedItem: {}
         })
         const parsed = parse(nextProps.location.search);
-
+        const itemFound= onlyWebData[0].data.filter(item => item.businessName ===  parsed['businessName'])
         this.setState({
-            searchItem: parsed['businessName']
+            searchItem: parsed['businessName'],
+            webItem: itemFound[0]
         });
 
         
@@ -45,6 +50,7 @@ class Solution extends React.Component {
                   variables: { businessName: this.state.searchItem}
                 },
                 props: (props) => ({
+                    webItem: this.state.webItem,
                  searchData: props.data && props.data.getSolutionByStatus })
                 })
         )(SolutionTitleBar)

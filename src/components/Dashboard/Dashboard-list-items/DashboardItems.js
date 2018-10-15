@@ -1,6 +1,7 @@
 import React from 'react';
 import './DashboardItems.css';
 import  DashboardItem from '../Dashboard-item/DashboardItem';
+import  approvedImage from '../../../asstes/approved.png';
 
 class DashboardItems extends React.Component {
 
@@ -9,22 +10,22 @@ class DashboardItems extends React.Component {
         {
                 totalSolutions: 40,
                 status: 'Approved',
-                image: '../../../asstes/approved.png'
+                image: approvedImage
         },
         {
             totalSolutions: 40,
             status: 'Active',
-            image: '../../../asstes/approved.png'
+            image: approvedImage
         },
         {
             totalSolutions: 70,
             status: 'Rejected',
-            image: '../../../asstes/approved.png'
+            image: approvedImage
         },
         {
             totalSolutions: 46,
             status: 'Pending',
-            image: '../../../asstes/approved.png'
+            image: approvedImage
         }
     ]
     }

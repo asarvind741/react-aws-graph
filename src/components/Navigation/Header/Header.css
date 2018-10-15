@@ -200,5 +200,10 @@ h4.heading-searhweb {
     margin: 0 0 0 -120%;
     cursor: pointer;
 }
-.act_wdth .header-tool-bar div img {margin: 0 0 0 -105%;}
+.header-tool-bar div img {margin: 0 0 0 -105%;}
 header{min-height: 70px;}
+
+.header-tool-bar {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}

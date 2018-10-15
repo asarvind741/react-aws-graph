@@ -6,8 +6,8 @@
 
 .solution-title-bar p {
     margin: 0;
-    padding: 0px 18px 0px 00;
-    color: white; font-size: 15px;
+    padding: 5px 18px 5px 00;
+    color: white; font-size: 12px;
     display: table-cell;
 }
 

@@ -58,7 +58,10 @@ class Header extends React.Component {
     this.props.signout()
   }
 
-  async componentDidMount (){
+  
+
+  renderDashBoard = async event => {
+    this.props.history.push('/home');
   }
 
 
@@ -110,7 +113,7 @@ class Header extends React.Component {
     );
   }
 
-  let classToAdd = 'act_wdth'
+  // let classToAdd = 'act_wdth'
 
     return (
       <div 
@@ -126,7 +129,7 @@ class Header extends React.Component {
                     </div>                    
                 </IconButton>
             </div>
-            <div>
+            <div onClick = { this.renderDashBoard}>
               <img src = { logo } alt = "logo" width = "100" />
             </div>
             <div className="header-search header-col">

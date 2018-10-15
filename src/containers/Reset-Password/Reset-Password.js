@@ -57,7 +57,6 @@ class ResetPassword extends React.Component {
                 })
             })
             .catch(e => {
-                console.log("eeeeeeeeeeee", e)
                if(e.code === "UserNotFoundException")
                 this.props.errorMessage("E-mail address not registered. Please enter correct email")
             })
