@@ -6,7 +6,7 @@
 }
 
 .sidenav-item-close {
-    padding: 10px;
+    padding: 10px 10px 30px;
    cursor: pointer;
    text-decoration: none;
    border-bottom: 2px solid #f7f3f3;
@@ -19,4 +19,6 @@
 }
 .align-image.rit_icn {
     float: right;
+    position:relative; 
+    top:12px
 }

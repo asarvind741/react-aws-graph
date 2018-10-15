@@ -126,7 +126,8 @@ class App extends React.Component {
                     closed={this.openMeunHandler} />
                     </div>: null
                  }
-                 <div className = {this.state.openMenu ? 'right-side' : 'right-side-collapse'}>
+                 {/* <div className = {this.state.openMenu ? 'right-side' : 'right-side-collapse'}> */}
+                 <div className =  "right-side-collapse">
                  <NotificationMessage />
                 <Routes childProps = {childProps } />
                 </div>           

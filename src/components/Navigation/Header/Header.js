@@ -113,7 +113,9 @@ class Header extends React.Component {
   let classToAdd = 'act_wdth'
 
     return (
-      <div className = { this.props.open ? 'act_wdth' : null}>
+      <div 
+      // className = { this.props.open ? 'act_wdth' : null}
+      >
        
         <AppBar position="static" className = "Root">
           <Toolbar className="header-tool-bar">
