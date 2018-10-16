@@ -1,12 +1,17 @@
 import { ToastContainer } from "react-toastify";
 import React from 'react';
 import "react-toastify/dist/ReactToastify.css";
+import './NotificationMessage.css';
 
 const notificationMessage = (props) => (
     <ToastContainer 
-    position="top-center"
+    newestOnTop = { true }
+    draggable = { true }
+    // className = "toast-class"
+    // position="top-right"
     // closeButton = { true }
-    autoClose = {5000} />
+    position = "top-center"
+    autoClose = {10000} />
 )
 
 export default notificationMessage;

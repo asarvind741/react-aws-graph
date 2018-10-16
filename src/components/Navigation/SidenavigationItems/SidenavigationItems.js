@@ -18,7 +18,7 @@ class SidenavigationItems extends React.Component {
             <SidenavigationItem icon = "Group">Team Members</SidenavigationItem>
             <SidenavigationItem icon = "InsertChart">Reports</SidenavigationItem>
             <SidenavigationItem icon = "Layers">Preferences</SidenavigationItem>
-            <p className = {(this.props.isOpen) ? 'saved-reports': null}>Saved Reports</p>
+            <p className = {(this.props.isOpen) ? 'saved-reports': 'sidemenu-collapsed'}>Saved Reports</p>
             <SidenavigationItem icon = "Assignment">Current Month</SidenavigationItem>
             <SidenavigationItem icon = "Assignment">Last Quarter</SidenavigationItem>
             </Fragment>

@@ -4,3 +4,8 @@
     margin-left: 13px;
     border-bottom: 2px solid #f7f3f3;
 }
+
+.sidemenu-collapsed {
+    margin-bottom: 50px;
+    border-bottom: 2px solid #f7f3f3;
+}
