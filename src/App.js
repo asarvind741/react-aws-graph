@@ -77,6 +77,7 @@ class App extends React.Component {
     }
 
     signoutHandler = async event =>{
+        localStorage.removeItem('jwtToken');
         await Auth.signOut();
         this.setState({user:null});
         this.userHasAuthenticated(false);

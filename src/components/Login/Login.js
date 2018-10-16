@@ -12,6 +12,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import logo from '../../asstes/Lexxcen_logo-0.png';
+
 import './Login.css';
 
 const styles = theme => ({
@@ -50,8 +51,10 @@ const styles = theme => ({
 
 class LoginComponent extends React.Component {
  
+  
 
   render(){
+
     const { classes } = this.props;
   return (
     <React.Fragment>
@@ -83,7 +86,12 @@ class LoginComponent extends React.Component {
               />
             </FormControl>
             <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
+              control={<Checkbox 
+                checked = { this.props.rememberMe }
+                color="primary" 
+                id = "rememberMe"
+                name = "rememberMe"
+                onChange = { this.props.changed} />}
               label="Remember me"
             />
             <Button
