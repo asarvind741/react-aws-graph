@@ -28,9 +28,11 @@
     max-width: 48px;
     float: left;
     background: #fff;
-    height: 100vh;
+    height: calc(100vh - 70px);
     box-shadow: 6px 2px 2px -3px rgba(0,0,0,0.3);
     background-color: white;
 }
 
-.expand-side-menu{    position: fixed;top: 0;left: 0; z-index:999; background:#fff; height:100vh; box-shadow:6px 2px 2px -3px rgba(0,0,0,0.3)}
+.expand-side-menu{    position: fixed;
+    /* top: 0; */
+    left: 0; z-index:999; background:#fff; height:100vh; box-shadow:6px 2px 2px -3px rgba(0,0,0,0.3)}
