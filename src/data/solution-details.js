@@ -216,4 +216,13 @@ Response mapping template-
 
 // React-toastify tutorial
 // https://www.npmjs.com/package/react-toastify
-// https://github.com/fkhadra/react-toastify/issues/94
+// https://github.com/fkhadra/react-toastify/issues/
+
+
+
+// xss attack-
+// https://helmetjs.github.io/docs/csp/
+// https://expressjs.com/en/advanced/best-practice-security.html
+// https://www.npmjs.com/package/express-sanitizer
+// https://www.npmjs.com/package/xss
+// http://expressjs.com/en/guide/behind-proxies.html
