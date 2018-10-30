@@ -226,3 +226,23 @@ Response mapping template-
 // https://www.npmjs.com/package/express-sanitizer
 // https://www.npmjs.com/package/xss
 // http://expressjs.com/en/guide/behind-proxies.html
+
+
+// Contineous Integration with Angular
+// https://hackernoon.com/continuous-integration-with-angular-cli-ea6a40fa7d3c
+// https://hackernoon.com/continuous-integration-for-angular-projects-with-travisci-4d2cc72d7853
+// https://cloudinary.com/documentation/cloudinary_get_started
+// http://mseemann.io/frontend/2016/05/31/setup-angular-2-app-part-1.html
+// https://blog.cloudboost.io/continuous-integration-for-angular-and-firebase-809507053058
+
+// Reactjs Interview Questions-
+// https://mindmajix.com/reactjs-interview-questions
+
+// PWA to app store
+// https://debuggerdotbreak.judahgabriel.com/2018/04/13/i-built-a-pwa-and-published-it-in-3-app-stores-heres-what-i-learned/
+// https://www.joshmorony.com/the-step-by-step-guide-to-publishing-a-html5-mobile-application-on-app-stores/
+// https://docs.microsoft.com/en-us/visualstudio/cross-platform/tools-for-cordova/publishing/publish-to-a-store?view=toolsforcordova-2017
+
+
+// Angular dashboard
+// http://wrapbootstrap.com/preview/WB07978N9
